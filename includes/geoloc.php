@@ -1,7 +1,6 @@
 <?php
 // converte le coordinate nella località corrispondente
-$risultati = mapboxReverse($longitudine,$latitudine);
-$localita = $risultati['localita'];
+$localita = mapboxReverse($longitudine,$latitudine);
 // estrae i disponibili dal db
 $elenco = estraeElenco($db,$localita);
 $output = creaElenco($elenco);
