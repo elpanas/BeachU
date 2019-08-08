@@ -8,13 +8,9 @@ function mapboxReverse($long, // input: longitudine
     
     $content = json_decode($inputhttp,true);
 
-    $cap = $content['features'][0]['context'][0]['text'];
     $loc = $content['features'][0]['context'][1]['text'];
-
-    $output = array('cap' => $cap,
-                    'localita' => $loc);
     
-    return $output; // output: array con l'indirizzo
+    return $loc; // loc: array con la località
 }
 /*
 function mapboxForward($indirizzo){ // input: indirizzo
