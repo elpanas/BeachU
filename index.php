@@ -31,13 +31,9 @@ if (isset($content['message']))
 	include 'includes/geoloc.php';
 	break;
 
-    	case ($messaggio == 'Preferiti'):
+    	case ($messaggio == 'Lista Preferiti'):
 	include 'includes/infopreferiti.php';
-	break;
-	
-	case ($messaggio == 'Registrazione'):
-	// registraUtente($username);
-	break;
+	break;	
 	
 	default: // ha inserito solo la località
 	include 'includes/infolocalita.php';
