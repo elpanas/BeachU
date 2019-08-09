@@ -41,6 +41,8 @@ function inviaMsg($data,$url,$post) {
 
 function creaElenco($elenco) {
 	
+	$markup = null;
+	
 	if ($elenco != null)
 	{
 		$text = '<b>Stabilimenti disponibili:</b>';
@@ -63,6 +65,8 @@ function creaElenco($elenco) {
 }
 
 function creaElencoPreferiti($elenco) {
+	
+	$markup = null;
 	
 	if ($elenco != null)
 	{
