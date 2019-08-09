@@ -16,15 +16,7 @@ Example: "riccione" oppure "torre pedrera"
 <b>Your position:</b>
 clicking on the down button, you will get a list of the available bathing estabilishments near your actual position.';
 
-// array contenente le voci di menu
-$replyMarkup = array('keyboard' => array(array(array('text' => 'Lista Preferiti'),
-                                               array('text' => 'Invia posizione',
-                                                     'request_location' => true))),
-                     'resize_keyboard' => true
-                );
-
-// codifica l'array in formato json
-$encodedMarkup = json_encode($replyMarkup);
+$encodedMarkup = creaMenuKeyboard();
 
 $data = creaMsg($chatID,$text,$encodedMarkup);	
 inviaMsg($data,$url,true);
