@@ -5,7 +5,7 @@ $localita = mapboxReverse($longitudine,$latitudine);
 $elenco = estraeElenco($db,$localita);
 $output = creaElenco($elenco);
 $text = $output['testo'];
-$encodedMarkup = $output['inlinek'];
+$encodedMarkup = ($output['inlinek'] != null) ? $output['inlinek'] : creaMenuKeyboard();
 $data = creaMsg($chatID,$text,$encodedMarkup);
 // invia il messaggio POST
 inviaMsg($data,$url,true);
