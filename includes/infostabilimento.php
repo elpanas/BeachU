@@ -15,6 +15,8 @@ if (!controllaPreferito($db,$id_stabilimento,$username))
                                                                                   'callback_data' => '/p'.$id_stabilimento))));		
         $encodedMarkup = json_encode($inline_keyboard);
     }
+else
+    $encodedMarkup = creaMenuKeyboard();
 
 // testo del messaggio
 $text = 'Lo stabilimento '.$dati_stab['nome'].' a '.$dati_stab['localita'].' ha '.$dati_stab['posti'].' ombrelloni disponibili'.PHP_EOL;    
