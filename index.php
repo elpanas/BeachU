@@ -1,4 +1,7 @@
 <?php 
+require 'vendor/autoload.php';
+$dotenv = new DotenvDotenv(__DIR__);
+$dotenv->load();
 require 'settings/config.php';
 require 'db.php';
 require 'functions.php';
