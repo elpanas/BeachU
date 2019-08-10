@@ -24,7 +24,7 @@ if (isset($content['message']))
     $encodedMarkup = creaMenuKeyboard();
 
     $loggato = controllaSessione($db,$chatID); // Verifica che esista una sessione
-    $dati_reg = (!$loggato) ? controllaReg($db,$user) : NULL; // registrazione in attesa di password
+    $dati_reg = (!$loggato) ? controllaReg($db,$username) : NULL; // registrazione in attesa di password
 	
     switch(true) {
     	case ($messaggio == '/start'):
