@@ -23,7 +23,7 @@ if (isset($content['message']))
     $url = API_URL . 'sendMessage'; // url del bot telegram
     $encodedMarkup = creaMenuKeyboard();
 
-    $loggato = constrollaSessione($db,$chatID); // Verifica che esista una sessione
+    $loggato = controllaSessione($db,$chatID); // Verifica che esista una sessione
     $dati_reg = (!$loggato) ? controllaReg($db,$user) : NULL; // registrazione in attesa di password
 	
     switch(true) {
