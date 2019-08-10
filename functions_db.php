@@ -95,7 +95,7 @@ function controllaReg($db,$user) {
     if($result = $db->query($query))
         if ($result->num_rows > 0)
             while($row = $result->fetch_assoc())
-                $dati = array('id' => $row['id'],
+                $dati = array('idu' => $row['id'],
                               'psw' => $row['psw'],
                               'attesa_psw' => $row['attesa_psw']);
  
@@ -108,7 +108,7 @@ function controllaReg($db,$user) {
 function controllaUtente($db,$idu,$password) {
 
     $esito = false;
-    $psw = hash('sha1',str_replace('/',$password));
+    $psw = hash('sha1',str_replace('/','',$password));
     $query = "SELECT * FROM utenti WHERE id = $idu AND password = '$psw'";
    
     if($result = $db->query($query))
