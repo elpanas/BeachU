@@ -97,7 +97,7 @@ function controllaReg($db,$user) {
             while($row = $result->fetch_assoc())
                 $dati = array('id' => $row['id'],
                               'psw' => $row['psw'],
-                              'attesa' => $row['attesa_psw']);
+                              'attesa_psw' => $row['attesa_psw']);
  
     $result->free();
 
