@@ -1,8 +1,8 @@
 <?php 
 require 'vendor/autoload.php';
-$dotenv = new Dotenv(__DIR__);
+$dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
-echo $bot_token = getenv("BOT_TOKEN");
+echo $bot_token = getenv('BOT_TOKEN');
 require 'settings/config.php';
 require 'db.php';
 require 'functions.php';
