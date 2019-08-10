@@ -124,10 +124,12 @@ function controllaUtente($db,$idu,$password) {
 }
 
 // controlla se lo stabilimento è già in elenco
-function controllaPreferito($db,$ids,$idu) {
+function controllaPreferito($db,$ids,$user) {
 
     $esito = false;
-    $query = "SELECT id FROM preferiti WHERE idstab = $ids AND idutente = $idu";
+    $query = "SELECT id FROM preferiti 
+              WHERE idstab = $ids AND 
+                    idutente = (SELECT id FROM utenti WHERE username = '$user')";
    
     if($result = $db->query($query))
         if ($result->num_rows > 0)
