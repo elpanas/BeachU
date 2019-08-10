@@ -70,7 +70,7 @@ function controllaSessione($db,$chatid){
 
     $loggato = 0;   
 
-    $db->query("DELETE FROM sessioni WHERE TIMEDIFF(NOW(),scadenza) > 24") or die($db->mysql_error);
+    $db->query("DELETE FROM sessioni WHERE TIMEDIFF(NOW(),scadenza) > '24:00:00'") or die($db->mysql_error);
    
     $query = "SELECT loggato FROM sessioni WHERE chatid = $chatid";
    
