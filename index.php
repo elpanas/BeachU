@@ -24,7 +24,15 @@ if (isset($content['message']))
     $encodedMarkup = creaMenuKeyboard();
 
     $loggato = controllaSessione($db,$chatID); // Verifica che esista una sessione
-    $dati_reg = (!$loggato) ? controllaReg($db,$username) : NULL; // registrazione in attesa di password
+    if (!$loggato)
+    {
+        $dati_reg = controllaReg($db,$username); // registrazione in attesa di password
+        $flag_psw = $dati_reg['attesa_psw'];
+    }
+    else
+        $dati_reg = $flag_psw = NULL;
+    
+
 	
     switch(true) {
     	case ($messaggio == '/start'):
@@ -39,7 +47,7 @@ if (isset($content['message']))
 	    include 'includes/infopreferiti.php';
 	    break;	
 	
-	    case ($dati_reg != NULL && $dati_reg['attesa_psw']): // l'utente non ha ancora completato la reg     
+	    case ($dati_reg != NULL && $flag_psw): // l'utente non ha ancora completato la reg     
         include 'includes/gestionelogin.php';	
         break;    
 

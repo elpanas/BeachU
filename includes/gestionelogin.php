@@ -10,7 +10,7 @@ if (!$dati_reg['psw'])
     inserisceSessione($db,$chatID);  // l'utente è registrato, quindi crea la sessione
     $text = 'Registrazione completata!';
     }
-elseif ($dati_reg['attesa_psw'] && !controlloUtente($db,$dati_reg['idu'],$messaggio)) // Se la psw non è NULL, è un login ma la psw è errata
+elseif ($flag_psw && !controlloUtente($db,$dati_reg['idu'],$messaggio)) // Se la psw non è NULL, è un login ma la psw è errata
         $text = 'Password errata';
 else       
     { 
