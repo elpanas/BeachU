@@ -49,7 +49,7 @@ if (isset($content['message']))
 	    include 'includes/infopreferiti.php';
 	    break;	
 	
-	    case ($dati_reg != NULL && $flag_psw == 1): // l'utente non ha ancora completato la reg     
+	    case ($dati_reg != NULL && $flag_psw): // l'utente non ha ancora completato la reg     
         include 'includes/gestionelogin.php';	
         break;    
 
