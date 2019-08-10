@@ -69,6 +69,8 @@ function inserisceUtente($db,$user) {
 function controllaSessione($db,$chatid){
 
     $loggato = 0;   
+
+    $db->query("DELETE FROM sessioni WHERE TIMEDIFF(NOW(),scadenza) > 24 ");
    
     $query = "SELECT loggato FROM sessioni WHERE chatid = $chatid";
    
