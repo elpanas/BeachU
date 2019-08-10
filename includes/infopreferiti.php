@@ -2,7 +2,7 @@
 if ($loggato)
     {
      // estrae i disponibili dal db
-     $elenco = estraePreferiti($db,$user);
+     $elenco = estraePreferiti($db,$username);
      $output = creaElencoPreferiti($elenco);
      $text = $output['testo'];
      if ($output['inlinek'] != null) $encodedMarkup = $output['inlinek'];
@@ -20,7 +20,7 @@ elseif ($dati_reg != NULL)
     }
 else // l'utente non è registrato
     {
-        inserisceUtente($db,$user);        
+        inserisceUtente($db,$username);        
         $text = 'Inserire una password';
     }
 

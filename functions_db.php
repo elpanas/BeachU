@@ -59,7 +59,7 @@ function inserisceSessione($db,$chatid) {
 
 function inserisceUtente($db,$user) {
     
-    $user = real_escape_string($user);
+    $user = $db->real_escape_string($user);
 
     return $db->query("INSERT INTO utenti SET username = '$user'");
 }
