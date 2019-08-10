@@ -27,11 +27,10 @@ if (isset($content['message']))
     if (!$loggato)
     {
         if ($dati_reg = controllaReg($db,$username) != NULL) // registrazione in attesa di password
-            $flag_psw = $dati_reg['attesa_psw'];
+            echo $flag_psw = $dati_reg['attesa_psw'];
     }
     else
-        $dati_reg = $flag_psw = NULL;
-    
+        $dati_reg = $flag_psw = NULL;   
 
 	
     switch(true) {
