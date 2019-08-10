@@ -4,7 +4,7 @@
 * Quindi questo messaggio (senza slash) deve essere
 * la psw inserita dall'utente e non una località
 */
-if ($dati_reg['psw'] == 0)
+if ($dati_reg['psw'])
     {
     inseriscePassword($db,$dati_reg['idu'],$messaggio); // inserisce la psw nel db
     inserisceSessione($db,$chatID);  // l'utente è registrato, quindi crea la sessione

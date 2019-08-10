@@ -9,7 +9,7 @@ if ($loggato)
     }
 elseif ($dati_reg != NULL) 
     {
-        if (!$dati_reg['psw']) // l'utente deve ancora completare la registrazione ma ha inserito di nuovo il comando /preferiti
+        if ($dati_reg['psw']) // l'utente deve ancora completare la registrazione ma ha inserito di nuovo il comando /preferiti
             $text = 'Non sei ancora registrato/a
                      Inserire una password priva dello slash iniziale "\"';
         else       
