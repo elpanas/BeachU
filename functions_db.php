@@ -49,7 +49,7 @@ function cambiaFlagAttesa($db,$idu) {
     return $db->query("UPDATE utenti SET attesa = IF(attesa = 1,0,1) WHERE id = $idu");
 }
 
-function inseriscePassword($idu,$password) {  
+function inseriscePassword($db,$idu,$password) {  
     return $db->query("UPDATE utenti SET password = '$password', attesa = 0 WHERE id = $idu");
 }
 
