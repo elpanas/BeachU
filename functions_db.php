@@ -45,7 +45,7 @@ function estraeElenco($db,$localita) {
     return $elenco;
 }
 
-function cambiaFlagAttesa($idu) {
+function cambiaFlagAttesa($db,$idu) {
     return $db->query("UPDATE utenti SET attesa = IF(attesa = 1,0,1) WHERE id = $idu");
 }
 

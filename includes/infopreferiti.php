@@ -14,7 +14,7 @@ elseif ($dati_reg != NULL)
                      Inserire una password priva dello slash iniziale "\"';
         else       
             {
-            cambiaFlagAttesa($dati_reg['id']); // imposta il flag a 1
+            cambiaFlagAttesa($db,$dati_reg['id']); // imposta il flag a 1
             $text = 'Inserire la password'; // l'utente è registrato e deve semplicemente inserire la sua psw  
             }          
     }

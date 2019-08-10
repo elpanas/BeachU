@@ -15,7 +15,7 @@ elseif ($dati_reg['attesa_psw'] && !controlloUtente($db,$dati_reg['idu'],$messag
 else       
     { 
        inserisceSessione($db,$chatID);  // l'utente è registrato e la psw è corretta, quindi crea la sessione
-       cambiaFlagAttesa($dati_reg['id']); // imposta il flag a 0
+       cambiaFlagAttesa($db,$dati_reg['id']); // imposta il flag a 0
        $text = 'Login effettuato. 
                 Inserire il comando desiderato o il nome di una località';
     }
