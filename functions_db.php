@@ -108,7 +108,6 @@ function controllaReg($db,$user) {
 function controllaUtente($db,$idu,$password) {
 
     $esito = false;
-    $user = $db->real_escape_string($user);
     $psw = hash('sha1',str_replace('/',$password));
     $query = "SELECT * FROM utenti WHERE id = $idu AND password = '$psw'";
    
