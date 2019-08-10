@@ -49,8 +49,9 @@ function cambiaFlagAttesa($db,$idu) {
     return $db->query("UPDATE utenti SET attesa = IF(attesa = 1,0,1) WHERE id = $idu");
 }
 
-function inseriscePassword($db,$idu,$password) {  
-    return $db->query("UPDATE utenti SET password = '$password', attesa_psw = 0 WHERE id = $idu");
+function inseriscePassword($db,$idu,$password) { 
+    $psw = hash('sha1',str_replace('/','',$password));  
+    return $db->query("UPDATE utenti SET password = '$psw', attesa_psw = 0 WHERE id = $idu");
 }
 
 function inserisceSessione($db,$chatid) {
