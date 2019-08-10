@@ -87,7 +87,7 @@ function controllaReg($db,$user) {
     $dati = null;
     $user = $db->real_escape_string($user);
     $query = "SELECT id,
-                     IF(password = NULL,0,1) as psw,
+                     ISNULL(password) as psw,
                      attesa_psw
               FROM utenti
               WHERE username = '$user'";
