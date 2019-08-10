@@ -71,7 +71,7 @@ elseif(isset($content['callback_query']))
 	
     switch(true) { // ha inviato...	
 	    case ($count_p > 0): // inserisce il preferito nel db 
-        if (controllaSessione($chatID))    
+        if (controllaSessione($db,$chatID))    
 	        $data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore';
         else
             $data['text'] = 'Utente non registrato';

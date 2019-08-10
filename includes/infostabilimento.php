@@ -7,7 +7,7 @@ $dati_stab = estraeDisp($db,$id_stabilimento);
 $indirizzo = urlencode($dati_stab['indirizzo']);
 
 // controlla se è già presente tra i Preferiti
-if (!controllaPreferito($db,$id_stabilimento,$username) && controlloSessione($chatID))
+if (!controllaPreferito($db,$id_stabilimento,$username) && controllaSessione($db,$chatID))
     {
         // crea il bottone inline
         $inline_keyboard = array('inline_keyboard' => array(array(array('text' => 'Aggiungi ai preferiti',
