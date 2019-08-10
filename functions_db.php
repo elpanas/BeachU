@@ -55,7 +55,7 @@ function inseriscePassword($db,$idu,$password) {
 }
 
 function inserisceSessione($db,$chatid) {
-    return $db->query("INSERT INTO sessioni SET chatid = '$chatid'");
+    return $db->query("INSERT INTO sessioni SET chatid = '$chatid', loggato = 1");
 }
 
 function inserisceUtente($db,$user) {
