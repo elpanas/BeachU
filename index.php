@@ -1,7 +1,7 @@
 <?php 
 require 'vendor/autoload.php';
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load(); // mah
+$dotenv = new Dotenv\Dotenv();
+$dotenv->load(__DIR__); // mah
 echo $bot_token = getenv('BOT_TOKEN');
 require 'settings/config.php';
 require 'db.php';
