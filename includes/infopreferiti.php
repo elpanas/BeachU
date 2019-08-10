@@ -15,7 +15,7 @@ elseif ($dati_reg != NULL)
         else       
             {
             cambiaFlagAttesa($db,$dati_reg['idu']); // imposta il flag a 1
-            $text = 'Inserire la password'; // l'utente è registrato e deve semplicemente inserire la sua psw  
+            $text = 'Inserire la propria password'; // l'utente è registrato e deve semplicemente inserire la sua psw  
             }          
     }
 else // l'utente non è registrato

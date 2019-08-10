@@ -16,8 +16,7 @@ else
     { 
        inserisceSessione($db,$chatID);  // l'utente è registrato e la psw è corretta, quindi crea la sessione
        cambiaFlagAttesa($db,$dati_reg['idu']); // imposta il flag a 0
-       $text = 'Login effettuato. 
-                Inserire il comando desiderato o il nome di una località';
+       $text = 'Login effettuato. Inserire il comando desiderato o il nome di una località';
     }
 
 $data = creaMsg($chatID,$text,$encodedMarkup);	
