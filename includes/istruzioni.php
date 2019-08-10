@@ -16,7 +16,7 @@ Example: "riccione" oppure "torre pedrera"
 <b>Your position:</b>
 clicking on the down button, you will get a list of the available bathing estabilishments near your actual position.';
 
-$encodedMarkup = creaMenuKeyboard();
+$encodedMarkup = creaMenuKeyboard();    // crea il menu a tastiera
 
-$data = creaMsg($chatID,$text,$encodedMarkup);	
-inviaMsg($data,$url,true);
+$data = creaMsg($chatID,$text,$encodedMarkup);	// compone il messaggio
+inviaMsg($data,$url,true);  // invia il messaggio

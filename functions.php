@@ -1,6 +1,8 @@
 <?php
 // compone il messaggio
-function creaMsg($chatid,$text,$markup) {
+function creaMsg($chatid,   // input: id della chat
+                 $text,     // input: testo del messaggio
+                 $markup) { // input: menu allegato al messaggio
 	if($markup != null)
 		$data = array(
 				'text' => $text,
@@ -13,10 +15,13 @@ function creaMsg($chatid,$text,$markup) {
 				'chat_id' => $chatid,
 				'parse_mode' => 'html');
 	
-	return $data;
+	return $data; // output: dati da allegare al messaggio
 }
 
-function inviaMsg($data,$url,$post) {	
+// invia il messaggio
+function inviaMsg($data,    // input: dati allegati al messaggio
+                  $url,     // input: indirizzo di destinazione (bot Telegram)
+                  $post) {	// input: se è true usa il metodo POST altrimenti GET
 	
 	//  inizializza l'oggetto connessione
 	$ch = curl_init();
@@ -36,10 +41,11 @@ function inviaMsg($data,$url,$post) {
 	//  chiude la connessione
 	curl_close($ch);
 	
-	return $result;
+	return $result; // output: risposta del destinatario
 }
 
-function creaElenco($elenco) {
+// crea un menu inline con gli stabilimenti sulla base dell'input fornito
+function creaElenco($elenco) { // input: elenco degli stabilimenti in una località
 	
 	$markup = null;
 	
@@ -53,18 +59,19 @@ function creaElenco($elenco) {
 			$inline_keyboard['inline_keyboard'][$i][0]['callback_data'] = '/s'.$record['id'];
 			$i++;
 		}
-    	$markup = json_encode($inline_keyboard);
+    	$markup = json_encode($inline_keyboard); // converte l'array in formato json
 	}
 	else
 		$text = 'Non ci sono stabilimenti disponibili';
 	
 	$output = array('inlinek' => $markup,
-			'testo' => $text);
+			        'testo' => $text);
 	
-	return $output;
+	return $output; // array associativo con i dati che comporranno il messaggio
 }
 
-function creaElencoPreferiti($elenco) {
+// crea un menu inline con gli stabilimenti preferiti sulla base dell'input fornito
+function creaElencoPreferiti($elenco) { // input: elenco degli stabilimenti in una località
 	
 	$markup = null;
 	
@@ -81,12 +88,12 @@ function creaElencoPreferiti($elenco) {
     	$markup = json_encode($inline_keyboard);
 	}
 	else
-		$text = 'Lista preferiti vuota';
+		$text = 'Lista preferiti vuota'; // converte l'array in formato json
 	
 	$output = array('inlinek' => $markup,
 			        'testo' => $text);
 	
-	return $output;
+	return $output; // array associativo con i dati che comporranno il messaggio
 }
 
 function creaMenukeyboard() {

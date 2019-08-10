@@ -4,13 +4,13 @@
 * Quindi questo messaggio (senza slash) deve essere
 * la psw inserita dall'utente e non una località
 */
-if ($dati_reg['psw'])
+if ($dati_reg['psw']) // l'utente c'è ma non la password
     {
     inseriscePassword($db,$dati_reg['idu'],$messaggio); // inserisce la psw nel db
     inserisceSessione($db,$chatID);  // l'utente è registrato, quindi crea la sessione
     $text = 'Registrazione completata!';
     }
-elseif ($flag_psw && !controllaUtente($db,$dati_reg['idu'],$messaggio)) // Se la psw non è NULL, è un login ma la psw è errata
+elseif ($flag_psw && !controllaUtente($db,$dati_reg['idu'],$messaggio)) // la psw c'è, è un login ma la psw è errata
         $text = 'Password errata';
 else       
     { 
@@ -19,5 +19,5 @@ else
        $text = 'Login effettuato';
     }
 
-$data = creaMsg($chatID,$text,$encodedMarkup);	
-inviaMsg($data,$url,true);
+$data = creaMsg($chatID,$text,$encodedMarkup);	// compone il messaggio
+inviaMsg($data,$url,true);  // invia il messaggio
