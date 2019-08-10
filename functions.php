@@ -91,8 +91,8 @@ function creaElencoPreferiti($elenco) {
 
 function creaMenukeyboard() {
 	// array contenente le voci di menu
-	$replyMarkup = array('keyboard' => array(array(array('text' => 'Preferiti'),
-												   array('text' => 'Invia posizione',
+	$replyMarkup = array('keyboard' => array(array(array('text' => '/preferiti'),
+												   array('text' => '/posizione',
 														 'request_location' => true))),
 						 'resize_keyboard' => true,
 						 'one_time_keyboard' => false

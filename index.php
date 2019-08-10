@@ -21,22 +21,30 @@ if (isset($content['message']))
     $latitudine = isset($content["message"]["location"]["latitude"]) ? $content["message"]["location"]["latitude"] : '';
     $messaggio = isset($content["message"]["text"]) ? $content["message"]["text"] : '';
     $url = API_URL . 'sendMessage'; // url del bot telegram
+    $encodedMarkup = creaMenuKeyboard();
+
+    $loggato = constrollaSessione($db,$chatID); // Verifica che esista una sessione
+    $dati_reg = (!$loggato) ? controllaReg($db,$user) : NULL; // registrazione in attesa di password
 	
     switch(true) {
     	case ($messaggio == '/start'):
-	include 'includes/istruzioni.php';
-	break;
+	    include 'includes/istruzioni.php';
+	    break;
 	
-	case ($longitudine != NULL && $latitudine != NULL):
-	include 'includes/geoloc.php';
-	break;
+	    case ($longitudine != NULL && $latitudine != NULL):
+	    include 'includes/geoloc.php';
+	    break;
 
-    	case ($messaggio == 'Lista Preferiti'):
-	include 'includes/infopreferiti.php';
-	break;	
+    	case ($messaggio == '/preferiti'):
+	    include 'includes/infopreferiti.php';
+	    break;	
 	
-	default: // ha inserito solo la località
-	include 'includes/infolocalita.php';
+	    case ($dati_reg != NULL && $dati_reg['attesa_psw']): // l'utente non ha ancora completato la reg     
+        include 'includes/gestionelogin.php';	
+        break;    
+
+        default: // ha inserito solo la località  
+        include 'includes/infolocalita.php'; 
     	}
     }
 elseif(isset($content['callback_query']))
@@ -51,19 +59,22 @@ elseif(isset($content['callback_query']))
     $data = array('callback_query_id' => $id_query,
                   'text' => '');
 	
-    switch(true){ // ha inviato...	
-	case ($count_p > 0): // inserisce il preferito nel db     	
-	$data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore';
-	inviaMsg($data,$url,true);
-	break;
+    switch(true) { // ha inviato...	
+	    case ($count_p > 0): // inserisce il preferito nel db 
+        if (controlloSessione($chatID))    
+	        $data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore';
+        else
+            $data['text'] = 'Utente non registrato';
+	    inviaMsg($data,$url,true);
+	    break;
 		
-	case ($count_s > 0): // info dello stabilimento prescelto
-	include 'includes/infostabilimento.php';
-	break;
+	    case ($count_s > 0): // info dello stabilimento prescelto
+	    include 'includes/infostabilimento.php';
+	    break;
 	
-	default: // ha inserito solo la località
-	include 'includes/infolocalita.php';
-	}
+	    default: // ha inserito solo la località
+	    include 'includes/infolocalita.php';
+	    }
     }
 
 $db->close();

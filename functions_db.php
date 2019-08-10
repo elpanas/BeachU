@@ -45,14 +45,87 @@ function estraeElenco($db,$localita) {
     return $elenco;
 }
 
-function controllaPreferito($db,$ids,$user) {
+function cambiaFlagAttesa($idu) {
+    return $db->query("UPDATE utenti SET attesa = IF(attesa = 1,0,1) WHERE id = $idu");
+}
+
+function inseriscePassword($idu,$password) {  
+    return $db->query("UPDATE utenti SET password = '$password', attesa = 0 WHERE id = $idu");
+}
+
+function inserisceSessione($db,$chatid) {
+    return $db->query("INSERT INTO sessioni SET chatid = '$chatid'");
+}
+
+function inserisceUtente($db,$user) {
+    
+    $user = real_escape_string($user);
+
+    return $db->query("INSERT INTO utenti SET username = '$user'");
+}
+
+// controlla se l'utente è loggato
+function controllaSessione($db,$chatid){
+
+    $loggato = 0;   
+   
+    $query = "SELECT loggato FROM sessioni WHERE chatid = $chatid";
+   
+    if($result = $db->query($query))
+        if ($result->num_rows > 0)
+            while($row = $result->fetch_assoc())
+                $loggato = $row['loggato'];
+ 
+    $result->free();
+
+    return $loggato;
+}
+
+// controlla se l'utente ha la password
+function controllaReg($db,$user) {
+
+    $dati = null;
+    $user = $db->real_escape_string($user);
+    $query = "SELECT id,
+                     IF(password = NULL,0,1) as psw,
+                     attesa_psw
+              FROM utenti
+              WHERE username = '$user'";
+   
+    if($result = $db->query($query))
+        if ($result->num_rows > 0)
+            while($row = $result->fetch_assoc())
+                $dati = array('id' => $row['id'],
+                              'psw' => $row['psw'],
+                              'attesa' => $row['attesa_psw']);
+ 
+    $result->free();
+
+    return $dati;
+}
+
+// controlla se l'utente ha la password
+function controllaUtente($db,$idu,$password) {
 
     $esito = false;
     $user = $db->real_escape_string($user);
-    $query = "SELECT id
-              FROM preferiti
-              WHERE idstab = $ids AND
-                    idutente = (SELECT id FROM utenti WHERE username = '$user')";
+    $psw = hash('sha1',str_replace('/',$password));
+    $query = "SELECT * FROM utenti WHERE id = $idu AND password = '$psw'";
+   
+    if($result = $db->query($query))
+        if ($result->num_rows > 0)
+            $esito = true;
+ 
+    $result->free();
+
+    return $esito;
+}
+
+// controlla se lo stabilimento è già in elenco
+function controllaPreferito($db,$ids,$idu) {
+
+    $esito = false;
+    $query = "SELECT id FROM preferiti WHERE idstab = $ids AND idutente = $idu";
    
     if($result = $db->query($query))
         if ($result->num_rows > 0)
@@ -65,19 +138,11 @@ function controllaPreferito($db,$ids,$user) {
 
 function inseriscePreferito($db,$user,$idp) {
 
-    $esito = true;
     $user = $db->real_escape_string($user);
-    $query1 = "INSERT INTO utenti SET username = '$user'";
-    $query2 = "INSERT INTO preferiti (idstab,idutente)
-               VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))";
-
-    $db->query($query1);
-    if(!$db->query($query2));
-        $esito = false;
-
-    $db->close();
+    $query = "INSERT INTO preferiti (idstab,idutente)
+              VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))";
 	
-    return $esito;
+    return $db->query($query);
 }
 
 function estraePreferiti($db,$user){
@@ -101,8 +166,8 @@ function estraePreferiti($db,$user){
             while($row = $result->fetch_assoc())  // converte in un array associativo						
                 $elenco[$i++] = array('stabilimento' => $row['nome'],
                                       'localita' => $row['localita'],
-				      'posti' => $row['posti'],
-				      'id' => $row['id']);
+				                      'posti' => $row['posti'],
+				                      'id' => $row['id']);
 
 
     // libera la memoria
