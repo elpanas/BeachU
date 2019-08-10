@@ -26,8 +26,8 @@ if (isset($content['message']))
     $loggato = controllaSessione($db,$chatID); // Verifica che esista una sessione
     if (!$loggato)
     {
-        $dati_reg = controllaReg($db,$username); // registrazione in attesa di password
-        $flag_psw = $dati_reg['attesa_psw'];
+        if ($dati_reg = controllaReg($db,$username) != NULL) // registrazione in attesa di password
+            $flag_psw = $dati_reg['attesa_psw'];
     }
     else
         $dati_reg = $flag_psw = NULL;
