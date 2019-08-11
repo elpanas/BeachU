@@ -1,0 +1,86 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+info:
+  description: 'Questa applicazione permette di ricevere informazioni sulla disponibilità dei ombrelloni negli stabilimenti balneari'
+  version: "1.0.0"
+  title: 'BeachU'
+  contact:
+    name: Luca Panariello
+    email: l.panariello@campus.uniurb.it
+  license:
+    name: MIT
+servers: 
+  - url: https://beachu.herokuapp.com
+    description: Beachu API server
+  # Added by API Auto Mocking Plugin
+  - url: https://virtserver.swaggerhub.com/elpanas/beachu/1.0.0
+    description: SwaggerHub API Auto Mocking
+  
+paths: 
+# Messaggio con menu keyboard
+  /messaggio_menu_k:
+    post:
+      description: Invia un messaggio testuale al client Telegram con menu keyboard
+      requestBody:
+        required: true
+        content:
+          array:
+            schema:
+              type: object
+              properties:
+                  text:
+                      type: string
+                      example: Benvenuto
+                  chat_id:
+                      type: integer
+                      example: 123456
+                  parse_mode:
+                      type: string
+                      example: html
+          application/json:
+            schema:
+              type: object
+              properties:
+                  preferiti: 
+                      type: string
+                      example: '/preferiti'
+                  posizione:
+                      type: string
+                      example: '/posizione'                  
+      responses:
+        200:
+          description: Messaggio inviato con successo
+          
+  # Messaggio con menu inline        
+  /messaggio_menu_i:
+    post:
+      description: Invia un messaggio testuale al client Telegram con menu inline
+      requestBody:
+        required: true
+        content:
+          array:
+            schema:
+              type: object
+              properties:
+                  text:
+                      type: string
+                      example: 'Nettuno: 5'
+                  chat_id:
+                      type: integer
+                      example: 123456
+                  parse_mode:
+                      type: string
+                      example: html
+          application/json:
+            schema:
+              type: object
+              properties:
+                  text: 
+                      type: string
+                      example: 'Aggiungi a preferiti'
+                  callback_query:
+                      type: string
+                      example: '/p1'                  
+      responses:
+        200:
+          description: Messaggio inviato con successo
