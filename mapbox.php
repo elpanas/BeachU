@@ -2,7 +2,7 @@
 function mapboxReverse($long, // input: longitudine
                        $lat){ // input: latitudine
 
-    $url = MAPBOX_URL.$long.','.$lat.'.json?access_token='.MAPBOX_TOKEN.'&types=address'; // indirizzo per le richieste all'API
+    $url = MAPBOX_URL.$long.','.$lat.'.json?access_token='.getenv("MAPBOX_TOKEN").'&types=address'; // indirizzo per le richieste all'API
    
     $inputhttp = inviaMsg(null,$url,false); // invia il messaggio GET
     
