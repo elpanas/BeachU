@@ -42,9 +42,9 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
 }
 
 // resetta password
-function resetPassword($db,$username) {	
+function resetPassword($db,$chatid) {	
 	$db->query("UPDATE utenti SET password = NULL, attesa_psw = 1 WHERE username = '$username'");
-    $db->query("DELETE FROM sessioni WHERE username = '$username'");
+    $db->query("DELETE FROM sessioni WHERE chatid = '$chatid'");
 }
 
 // modifica il flag che indica l'attesa di una password
