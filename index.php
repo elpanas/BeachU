@@ -4,7 +4,6 @@ require 'db.php';
 require 'functions.php';
 require 'functions_db.php';
 require 'mapbox.php';
-require 'mail.php';
 
 $encodedMarkup = null; // inizializza la variabile per i menu
 
