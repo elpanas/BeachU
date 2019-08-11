@@ -21,10 +21,10 @@ function creaMsg($chatid,   // input: id della chat
 // invia il messaggio
 function inviaMsg($data,        // input: dati allegati al messaggio
                   $url,         // input: indirizzo di destinazione (bot Telegram)
-                  $post        // input: se Ë true usa il metodo POST altrimenti GET
+                  $post        // input: se √® true usa il metodo POST altrimenti GET
                   ) {  
 
-    $headers = array('Content-Length: ' . count($data));    
+    $headers = array('Content-type: applocation/json');    
 	
 	//  inizializza l'oggetto connessione
 	$ch = curl_init();
@@ -51,7 +51,7 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 }
 
 // crea un menu inline con gli stabilimenti sulla base dell'input fornito
-function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una localit‡
+function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una localit√†
 	
 	$markup = null;
 	
