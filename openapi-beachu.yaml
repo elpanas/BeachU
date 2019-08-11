@@ -1,5 +1,4 @@
 openapi: 3.0.0
-# Added by API Auto Mocking Plugin
 info:
   description: 'Questa applicazione permette di ricevere informazioni sulla disponibilità dei ombrelloni negli stabilimenti balneari'
   version: "1.0.0"
@@ -12,9 +11,6 @@ info:
 servers: 
   - url: https://beachu.herokuapp.com
     description: Beachu API server
-  # Added by API Auto Mocking Plugin
-  - url: https://virtserver.swaggerhub.com/elpanas/beachu/1.0.0
-    description: SwaggerHub API Auto Mocking
   
 paths: 
 # Messaggio con menu keyboard
