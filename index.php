@@ -5,11 +5,6 @@ require 'functions.php';
 require 'functions_db.php';
 require 'mapbox.php';
 
-$dotenv = Dotenv\Dotenv::create(__DIR__);
-$dotenv->load();
-
-echo getenv('BOT_TOKEN');
-
 $encodedMarkup = null; // inizializza la variabile per i menu
 
 $inputhttp = file_get_contents("php://input"); // legge le info in input
