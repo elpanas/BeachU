@@ -17,29 +17,29 @@ L'applicazione è attualmente costituita da 2 componenti:
 - **Client:**  bot Telegram
 - **Server:** un web service remoto implementato in php
 
-##### Il Client
+#### Il Client
 E' stato creato utilizzando oggetti e metodi forniti dall'API di Telegram. Si è scelto di utilizzare Telegram per la sua semplicità di utilizzo e la sua base installata piuttosto ampia.
 
-##### Il Web Service
+#### Il Web Service
 Il fornitore dello spazio web è Heroku.
 Il WS è stato implementato in linguaggio PHP v7, utilizzando un approccio prevalentemente procedurale, a parte rare eccezioni.
 
-##### Il Database
+#### Il Database
 E' stato scelto un database MySQL, in particolare ClearDB sempre fornito da Heroku, come add-on. Nel database vengono memorizzate le informazioni sugli stabilimenti e sugli utenti.
 
 ------------
 ### Funzionalità
-- ##### Ricerca per località
+- #### Ricerca per località
 Inserendo il nome della località, appare una lista degli stabilimenti disponibili e il numero di posti/ombrelloni ancora liberi, a patto che lo stabilimento sia presente nell'archivio.
-- ##### Ricerca per posizione
+- #### Ricerca per posizione
 Per mezzo della funzione di telegram o del pulsante nel menu che appare in basso */posizione*, è possibile inviare la propria posizione, attraverso la quale il web service restituisce una lista degli stabilimenti disponibili nelle vicinanze.
-- ##### Lista Preferiti
+- #### Lista Preferiti
 Sempre dal menu in basso, cliccando sul bottone */preferiti*, è possibile visualizzare una lista degli stabilimenti preferiti, previa registrazione
 
 ------------
 
 ## API esterne
-##### Mapbox
+#### Mapbox
 Mapbox è un servizio simile a google maps, che fornisce informazioni sulla base della posizione. In questo caso è stata sfruttata la sua API gratuita per effettuare un Reverse Geocoding, cioè la conversione delle coordinate geografiche (latitudine  e longitudine) in semplici indirizzi "umani".
 Tale conversione viene effettuata nel caso l'utente fornisca la sua posizione. Il web service prende le coordinate dal messaggio telegram, le invia all'api di Mapbox e riceve come risposta l'indirizzo, da cui poi estrapola la località e, sulla base di questa, effettua la ricerca degli stabilimenti.
 
