@@ -82,7 +82,7 @@ I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, son
 Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: [BeachU Wiki](https://github.com/elpanas/BeachU/wiki)
 
 ---
-
+#### Specifica OpenAPI
 [Specifica OpenAPI](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
 
 ---
