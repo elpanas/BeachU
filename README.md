@@ -60,9 +60,9 @@ Le richieste HTTP avvengono tutte con protocollo https, sia quelle POST che GET.
 
 La comunicazione con il DB avviene con autenticazione SSL.
 
-I parametri esterni delle query sql vengono preventivamente "trattati" con la funzione Myseli_real_escape_string() di PHP per evitare SQL Injiections
+I parametri esterni delle query sql vengono preventivamente "trattati" con la funzione mysqli_real_escape_string() di PHP per evitare SQL Injiections.
 
-Le liste preferiti sono accessibile solo agli utenti registrati con una semplice password. In caso di smarrimento può essere recuperata via mail
+Le liste preferiti sono accessibili solo agli utenti registrati, con una semplice password. In caso di smarrimento può essere resettata direttamente dal client Telegram.
 
 Le password degli utenti e il codice identificativo della chat memorizzati nel db, vengono convertiti con codifica hash di tipo sha1
 
