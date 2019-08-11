@@ -51,7 +51,7 @@ L'API basa il suo funzionamento sull'interscambio di dati tra client e server pe
 #### HTTP Requests client/server
 Le richieste HTTP tra il client (bot telegram) e il web service sono di tipo POST.
 
-Sia quelle in input che output trasportano dati in formato JSON, preventivamente (de)codificati per mezzo dell'apposita funzione json_encode/decode() fornita dal framework PHP.
+Sia quelle in input che output trasportano dati in formato JSON, preventivamente (de)codificati per mezzo dell'apposita funzione _json_encode/decode()_ fornita dal framework PHP.
 
 I dati all'interno dei file json, sono costituiti da voci di menu, informazioni sulla posizione e password.
 
