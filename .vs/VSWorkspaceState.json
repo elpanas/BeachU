@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\includes",
     "\\settings"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\settings\\config.php",
   "PreviewInSolutionExplorer": false
 }
