@@ -45,24 +45,29 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 }
 
 // crea un menu inline con gli stabilimenti sulla base dell'input fornito
-function creaElenco($elenco) { // input: elenco degli stabilimenti in una località
+function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una località
 	
 	$markup = null;
 	
 	if ($elenco != null)
 	{
-		$text = '<b>Stabilimenti disponibili:</b>';
+        $text = '<b>Stabilimenti ';
+		$text .= ($pref) ? 'disponibili:</b>' : 'preferiti:</b>';
 		$i = 0;
 		foreach ($elenco as $record)	
-		{			
-			$inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].': '.$record['posti'];
+		{	
+            if ($pref)		
+                $inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].' ('.$record['localita'].'): '.$record['posti'];
+            else
+			    $inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].': '.$record['posti'];
+
 			$inline_keyboard['inline_keyboard'][$i][0]['callback_data'] = '/s'.$record['id'];
 			$i++;
 		}
     	$markup = json_encode($inline_keyboard); // converte l'array in formato json
 	}
 	else
-		$text = 'Non ci sono stabilimenti disponibili';
+		$text = ($pref) ? 'Lista preferiti vuota' : 'Non sono stabilimenti disponibili';
 	
 	$output = array('inlinek' => $markup,
 			        'testo' => $text);
@@ -70,7 +75,7 @@ function creaElenco($elenco) { // input: elenco degli stabilimenti in una locali
 	return $output; // array associativo con i dati che comporranno il messaggio
 }
 
-// crea un menu inline con gli stabilimenti preferiti sulla base dell'input fornito
+/* crea un menu inline con gli stabilimenti preferiti sulla base dell'input fornito
 function creaElencoPreferiti($elenco) { // input: elenco degli stabilimenti in una località
 	
 	$markup = null;
@@ -94,7 +99,7 @@ function creaElencoPreferiti($elenco) { // input: elenco degli stabilimenti in u
 			        'testo' => $text);
 	
 	return $output; // array associativo con i dati che comporranno il messaggio
-}
+}*/
 
 function creaMenukeyboard() {
 	// array contenente le voci di menu
