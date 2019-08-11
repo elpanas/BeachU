@@ -99,7 +99,7 @@ Per la natura del servizio non è stato possibile usare dei dataset Opendata. Qu
 ---
 
 ### Conclusione
-Ovviamente l'utente non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis...: 
+Ovviamente l'utente (bagnante) non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis...: 
 
 - i lidi meno conosciuti o difficili da raggiungere (quindi con più posti liberi ;) )
 - i lidi più grandi. Molti bagnanti rinunciano o optano per la spiaggia libera perchè non sanno che c'è l'ultimo ombrellone vacante a pochi metri da loro.
