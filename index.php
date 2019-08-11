@@ -35,7 +35,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
         $dati_reg = $flag_psw = NULL;   
 	
     switch(true) {
-    	case ($messaggio == '/start'):
+    	case $messaggio == '/start':
 	    include 'includes/istruzioni.php';
 	    break;
 	
@@ -43,7 +43,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
 	    include 'includes/geoloc.php';
 	    break;
 
-    	case ($messaggio == '/preferiti'):
+    	case $messaggio == '/preferiti':
 	    include 'includes/infopreferiti.php';
 	    break;	
 	
