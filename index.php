@@ -4,12 +4,7 @@ require 'db.php';
 require 'functions.php';
 require 'functions_db.php';
 require 'mapbox.php';
-
-$provamail = '{"personalizations": [{"to": [{"email": "test@example.com"}]}],"from": {"email": "test@example.com"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}';
-
-echo '<pre>';
-print_r(json_decode($provamail));
-echo '</pre>';
+require 'mail.php';
 
 $encodedMarkup = null; // inizializza la variabile per i menu
 

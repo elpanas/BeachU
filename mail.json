@@ -1,17 +1,17 @@
 {
-  "content": [
-    {
-      "type": "text/plain",
-      "value": "and easy to do anywhere, even with cURL"
-    }
-  ],
-  "from": { "email": "test@example.com" },
   "personalizations": [
     {
       "to": [
         { "email": "test@example.com" }
       ]
-    }
+    } 
   ],
-  "subject": "Sending with SendGrid is Fun"
+  "from": { "email": "test@example.com" },
+  "subject": "Sending with SendGrid is Fun",
+  "content": [
+    {
+      "type": "text/plain",
+      "value": "and easy to do anywhere, even with cURL"
+    }
+  ]
 }
