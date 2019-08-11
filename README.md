@@ -78,29 +78,29 @@ I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, son
 
 ---
 
-#### Approfondimento
+### Approfondimento
 Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: [BeachU Wiki](https://github.com/elpanas/BeachU/wiki)
 
 ---
-#### Specifica OpenAPI
+### Specifica OpenAPI
 [Clicca qui](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
 
 ---
 
 ### Messa online del servizio
-Questa operazione avviene automaticamente, in quanto il fornitore dello spazio web, Heroku, è collegato alla repository GitHub dell'app in questione. Ad ogni modifica, i file presenti sul branch master vengono caricati sui server Heroku.
+Avviene automaticamente, in quanto il fornitore dello spazio web, Heroku, è collegato alla repository GitHub dell'app in questione. Ad ogni modifica, i file presenti sul branch indicato vengono caricati sui server Heroku.
 
 ---
 
 ### Esempio di utilizzo
-Per l'obbiettivo del servizio, non è stato possibile usare dei dataset Opendata. Quindi il database è stato popolato con dati fittizi, al fine di effettuare alcune prove. In futuro è prevista l'implementazione di un secondo client, che permetterà ai gestori degli stabilimenti di fornire le informazioni sulla posizione (l'indirizzo) e soprattutto il numero di ombrelloni disponibili man mano che vengono occupati.
+Per la natura del servizio non è stato possibile usare dei dataset Opendata. Quindi il database è stato popolato con dati fittizi, al fine di effettuare alcune prove. In futuro è prevista l'implementazione di un secondo client, che permetterà ai gestori degli stabilimenti di fornire le informazioni sulla posizione (l'indirizzo) e soprattutto il numero di ombrelloni disponibili man mano che vengono occupati.
 
 ---
 
 ### Conclusione
-Ovviamente l'utente non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis: 
+Ovviamente l'utente non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis...: 
 
 - i lidi meno conosciuti o difficili da raggiungere (quindi con più posti liberi ;) )
-- i lidi più grandi. Chissà quanti bagnanti rinunciano o optano per la spiaggia libera perchè non sanno che c'è l'ultimo ombrellone vacante a pochi metri da loro.
+- i lidi più grandi. Molti bagnanti rinunciano o optano per la spiaggia libera perchè non sanno che c'è l'ultimo ombrellone vacante a pochi metri da loro.
 
-Camminare sotto il sole cercando un posto libero costa fatica, sudore. Il nostro sudore è fatto d'acqua... e l'acqua non va sprecata.
+Camminare sotto il sole, cercando un posto libero, costa fatica e sudore. Il nostro sudore è fatto d'acqua... e l'acqua non va sprecata.
