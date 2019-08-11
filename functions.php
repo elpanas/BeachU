@@ -52,7 +52,7 @@ function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una 
 	if ($elenco != null)
 	{
         $text = '<b>Stabilimenti ';
-		$text .= ($pref) ? 'disponibili:</b>' : 'preferiti:</b>';
+		$text .= ($pref) ? 'preferiti:</b>' : 'disponibili:</b>';
 		$i = 0;
 		foreach ($elenco as $record)	
 		{	
