@@ -83,6 +83,10 @@ Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: 
 
 ---
 
+[Specifica OpenAPI](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
+
+---
+
 ### Messa online del servizio
 Questa operazione avviene automaticamente, in quanto il fornitore dello spazio web, Heroku, è collegato alla repository GitHub dell'app in questione. Ad ogni modifica, i file presenti sul branch master vengono caricati sui server Heroku.
 
