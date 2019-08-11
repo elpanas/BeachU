@@ -15,7 +15,7 @@ function creaMsg($chatid,   // input: id della chat
 				'chat_id' => $chatid,
 				'parse_mode' => 'html');
 	
-	return $data; // output: dati da allegare al messaggio
+	return json_encode($data); // output: dati da allegare al messaggio
 }
 
 // invia il messaggio
