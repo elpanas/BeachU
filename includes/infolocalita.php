@@ -1,9 +1,11 @@
 <?php 
-$elenco = null;
-// estrae i disponibili dal db
-$elenco = estraeElenco($db,$messaggio);
-$output = creaElenco($elenco);
+$elenco = null; // inizializza la variabile
+
+$elenco = estraeElenco($db,$messaggio); // estrae i disponibili dal db
+$output = creaElenco($elenco); // crea l'elenco degli stabilimenti
 $text = $output['testo'];
-$encodedMarkup = ($output['inlinek'] != null) ? $output['inlinek'] : creaMenuKeyboard();
-$data = creaMsg($chatID,$text,$encodedMarkup);	
-inviaMsg($data,$url,true);
+
+if ($output['inlinek'] != null) $encodedMarkup = $output['inlinek'];
+
+$data = creaMsg($chatID,$text,$encodedMarkup);	// compone il messaggio
+inviaMsg($data,$url,true); // invia il messaggio
