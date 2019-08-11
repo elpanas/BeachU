@@ -21,7 +21,10 @@ function creaMsg($chatid,   // input: id della chat
 // invia il messaggio
 function inviaMsg($data,        // input: dati allegati al messaggio
                   $url,         // input: indirizzo di destinazione (bot Telegram)
-                  $post) {      // input: se è true usa il metodo POST altrimenti GET
+                  $post        // input: se è true usa il metodo POST altrimenti GET
+                  ) {  
+
+    $headers = array('Content-Length: ' . count($data));    
 	
 	//  inizializza l'oggetto connessione
 	$ch = curl_init();
@@ -32,8 +35,11 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 		//  imposta il metodo come POST
 		curl_setopt($ch, CURLOPT_POST, count($data));
 		//  campi della richiesta POST
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);       
 	}
+
+    // inserisce gli l'headers
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 	//  accetta la risposta
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	//  esegue la richiesta POST
@@ -74,32 +80,6 @@ function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una 
 	
 	return $output; // array associativo con i dati che comporranno il messaggio
 }
-
-/* crea un menu inline con gli stabilimenti preferiti sulla base dell'input fornito
-function creaElencoPreferiti($elenco) { // input: elenco degli stabilimenti in una località
-	
-	$markup = null;
-	
-	if ($elenco != null)
-	{
-		$text = '<b>Stabilimenti preferiti:</b>';
-		$i = 0;
-		foreach ($elenco as $record)	
-		{			
-			$inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].' ('.$record['localita'].'): '.$record['posti'];
-			$inline_keyboard['inline_keyboard'][$i][0]['callback_data'] = '/s'.$record['id'];
-			$i++;
-		}
-    	$markup = json_encode($inline_keyboard);
-	}
-	else
-		$text = 'Lista preferiti vuota'; // converte l'array in formato json
-	
-	$output = array('inlinek' => $markup,
-			        'testo' => $text);
-	
-	return $output; // array associativo con i dati che comporranno il messaggio
-}*/
 
 function creaMenukeyboard() {
 	// array contenente le voci di menu
