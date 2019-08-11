@@ -83,7 +83,7 @@ Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: 
 
 ---
 #### Specifica OpenAPI
-[Specifica OpenAPI](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
+[Clicca qui](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
 
 ---
 
