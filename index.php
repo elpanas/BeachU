@@ -6,9 +6,6 @@ require 'functions_db.php';
 require 'mapbox.php';
 require 'mail.php';
 
-echo $provamail = '{"personalizations": [{"to": [{"email": "test@example.com"}]}],"from": {"email": "test@example.com"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}';
-
-
 $encodedMarkup = null; // inizializza la variabile per i menu
 
 $inputhttp = file_get_contents("php://input"); // legge le info in input
@@ -55,6 +52,10 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
         include 'includes/gestionelogin.php';	
         break;    
 
+        case $messaggio == '/reset':
+        include 'includes/resetpsw.php';
+        break;
+
         default: // ha inserito la località  
         include 'includes/infolocalita.php'; 
     	}
@@ -67,6 +68,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
     $username = $content['callback_query']['message']['chat']['username'];
     $id_preferito = str_replace('/p','',$callback,$count_p);    // elimina la parte extra che identifica il tipo di valore
     $id_stabilimento = str_replace('/s','',$callback,$count_s); // elimina la parte extra che identifica il tipo di valore 
+    $reset_psw = str_replace('/r','',$callback,$count_r); // elimina la parte extra che identifica il tipo di valore 
     $url = API_URL . 'answerCallbackQuery'; // url del bot telegram
     $data = array('callback_query_id' => $id_query,
                   'text' => '');
@@ -80,6 +82,10 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	    case ($count_s > 0): // info dello stabilimento prescelto
 	    include 'includes/infostabilimento.php';
 	    break;
+
+        case ($count_r > 0):
+        include 'includes/resetpswcallback.php';
+        break;
 	
 	    default: // ha inserito la località
 	    include 'includes/infolocalita.php';
