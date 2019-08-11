@@ -66,7 +66,7 @@ Le liste preferiti sono accessibile solo agli utenti registrati con una semplice
 
 Le password degli utenti e il codice identificativo della chat memorizzati nel db, vengono convertiti con codifica hash di tipo sha1
 
-I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, sono memorizzati in costanti. Il file di configurazione si trova in una cartella per evitare accessi diretti dalla root del sito.
+I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, sono memorizzati in variabili d'ambiente, impostate tramite l'interfaccia Heroku. Il file in cui sono memorizzati questi dati sensibili si trova al di fuori dello spazio pubblico, proprio per evitare accessi indesiderati.
 
 ---
 
