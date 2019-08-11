@@ -24,7 +24,7 @@ function inviaMsg($data,        // input: dati allegati al messaggio
                   $post        // input: se è true usa il metodo POST altrimenti GET
                   ) {  
 
-    $headers = array('Content-type: applocation/json');    
+    $headers = array('Content-type: application/json');    
 	
 	//  inizializza l'oggetto connessione
 	$ch = curl_init();
