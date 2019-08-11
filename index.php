@@ -5,6 +5,12 @@ require 'functions.php';
 require 'functions_db.php';
 require 'mapbox.php';
 
+$provamail = '{"personalizations": [{"to": [{"email": "test@example.com"}]}],"from": {"email": "test@example.com"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}';
+echo '<pre>';
+print_r($provamail);
+echo '</pre>';
+
+
 $encodedMarkup = null; // inizializza la variabile per i menu
 
 $inputhttp = file_get_contents("php://input"); // legge le info in input
