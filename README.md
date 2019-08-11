@@ -38,7 +38,7 @@ Sempre dal menu in basso, cliccando sul bottone */preferiti*, è possibile visua
 
 ------------
 
-## API esterne
+### API esterne
 #### Mapbox
 Mapbox è un servizio simile a google maps, che fornisce informazioni sulla base della posizione. In questo caso è stata sfruttata la sua API gratuita per effettuare un Reverse Geocoding, cioè la conversione delle coordinate geografiche (latitudine  e longitudine) in semplici indirizzi "umani".
 Tale conversione viene effettuata nel caso l'utente fornisca la sua posizione. Il web service prende le coordinate dal messaggio telegram, le invia all'api di Mapbox e riceve come risposta l'indirizzo, da cui poi estrapola la località e, sulla base di questa, effettua la ricerca degli stabilimenti.
