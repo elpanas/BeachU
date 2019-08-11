@@ -1,5 +1,5 @@
 <?php
-// define('BOT_TOKEN', '936947513:AAEZUdAcEhYL8tSqF_TdEmZGH97WvwSszf8');
+define('BOT_TOKEN', '936947513:AAEZUdAcEhYL8tSqF_TdEmZGH97WvwSszf8');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 define('MAPBOX_TOKEN', 'pk.eyJ1IjoibHVrZTE5ODMiLCJhIjoiY2p5eTd3eGZ5MWV5YTNkcnI2amJqbWFrbyJ9.jtWFPk-5ju4CcAjZI7nDUg');
 define('MAPBOX_URL', 'https://api.mapbox.com/geocoding/v5/mapbox.places/');
