@@ -21,10 +21,9 @@ function creaMsg($chatid,   // input: id della chat
 // invia il messaggio
 function inviaMsg($data,        // input: dati allegati al messaggio
                   $url,         // input: indirizzo di destinazione (bot Telegram)
-                  $post        // input: se è true usa il metodo POST altrimenti GET
-                  ) {  
-
-    $headers = array('Content-type: application/json');    
+                  $post) {      // input: se è true usa il metodo POST altrimenti GET
+                    
+     
 	
 	//  inizializza l'oggetto connessione
 	$ch = curl_init();
@@ -37,9 +36,6 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 		//  campi della richiesta POST
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);       
 	}
-
-    // inserisce gli l'headers
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 	//  accetta la risposta
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	//  esegue la richiesta POST
