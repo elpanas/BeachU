@@ -14,7 +14,7 @@ BeachU è un'pplicazione sviluppata per piattaforma Telegram che permette di ver
 ### Struttura e scelte implementative
 L'applicazione è attualmente costituita da 2 componenti:
 - **Client:**  bot Telegram
-- **Server:** un web service remoto implementato in php
+- **Server:** un web service remoto implementato in PHP
 
 #### Il Client
 E' stato creato utilizzando oggetti e metodi forniti dall'API di Telegram. Si è scelto di utilizzare Telegram per la sua semplicità di utilizzo e la sua base installata piuttosto ampia.
@@ -51,7 +51,7 @@ Per l'invio delle richieste HTTP è stata utilizzata la classe _cURL_.
 
 Le richieste tra il web service e l'API Mapbox vengono effettuate con metodo GET, poichè è l'unico supportato dalla suddeta API.
 
-#### Richieste al DB
+#### Query al DB
 Vengono effettuate in linguaggio SQL e inviate per mezzo della classe mysqli, messa a disposizione dal framework PHP.
 La creazione delle tabelle è stata invece effettuata per mezzo del software MySQL Workbench.
 
