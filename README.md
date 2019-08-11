@@ -37,15 +37,6 @@ Sempre dal menu in basso, cliccando sul bottone */preferiti*, è possibile visua
 
 ------------
 
-### API esterne
-#### Mapbox
-Mapbox è un servizio simile a google maps, che fornisce informazioni sulla base della posizione. In questo caso è stata sfruttata la sua API gratuita per effettuare un Reverse Geocoding, cioè la conversione delle coordinate geografiche (latitudine  e longitudine) in semplici indirizzi "umani".
-Tale conversione viene effettuata nel caso l'utente fornisca la sua posizione. Il web service prende le coordinate dal messaggio telegram, le invia all'api di Mapbox e riceve come risposta l'indirizzo, da cui poi estrapola la località e, sulla base di questa, effettua la ricerca degli stabilimenti.
-
-Anche se alcuni servizi avanzati legati all'API sono a pagamento, Mapbox è fornito in licenza open-source, come si può leggere qui: https://www.mapbox.com/about/open/
-
----
-
 ### Dettagli tecnici
 L'API basa il suo funzionamento sull'interscambio di dati tra client e server per mezzo di richieste HTTP così formate:
 
@@ -85,6 +76,15 @@ Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: 
 ---
 ### Specifica OpenAPI
 [Clicca qui](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
+
+---
+
+### API esterne
+#### Mapbox
+Mapbox è un servizio simile a google maps, che fornisce informazioni sulla base della posizione. In questo caso è stata sfruttata la sua API gratuita per effettuare un Reverse Geocoding, cioè la conversione delle coordinate geografiche (latitudine  e longitudine) in semplici indirizzi "umani".
+Tale conversione viene effettuata nel caso l'utente fornisca la sua posizione. Il web service prende le coordinate dal messaggio telegram, le invia all'api di Mapbox e riceve come risposta l'indirizzo, da cui poi estrapola la località e, sulla base di questa, effettua la ricerca degli stabilimenti.
+
+Anche se alcuni servizi avanzati legati all'API sono a pagamento, Mapbox è fornito in licenza open-source, come si può leggere qui: https://www.mapbox.com/about/open/
 
 ---
 
