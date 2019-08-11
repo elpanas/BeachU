@@ -1,6 +1,6 @@
 <?php
 // elimina la password nel db
-resetPassword($db,$chatID); 
+resetPassword($db,$chatID,$username); 
 $data['text'] = 'Reset Effettuato';
 
 // invia la risposta callback
