@@ -1,26 +1,37 @@
 openapi: 3.0.0
 info:
   description: 'Questa applicazione permette di ricevere informazioni sulla disponibilità dei ombrelloni negli stabilimenti balneari'
-  version: "1.0.0"
+  version: '1.0.0'
   title: 'BeachU'
   contact:
     name: Luca Panariello
     email: l.panariello@campus.uniurb.it
   license:
     name: MIT
-servers: 
-  - url: https://beachu.herokuapp.com
+servers:  - 
+  - url: https://virtserver.swaggerhub.com/elpanas/beachu/1.0.0
+    description: SwaggerHub API Auto Mocking
+  - url: https://api.telegram.org/
     description: Beachu API server
+  - url: https://api.mapbox.com/geocoding/v5/mapbox.places/
+    description: Mapbox API Server
   
 paths: 
-# Messaggio con menu keyboard
-  /messaggio_menu_k:
+  # Request all'API Telegram (Bot)
+  /bot{ApiBOTKey}/sendMessage:
+    parameters:
+      - in: path
+        name: ApiBOTKey
+        required: true
+        description: Api Key del bot Telegram
+        schema:
+          type: string
     post:
       description: Invia un messaggio testuale al client Telegram con menu keyboard
       requestBody:
         required: true
         content:
-          array:
+          application/json:
             schema:
               type: object
               properties:
@@ -29,54 +40,155 @@ paths:
                       example: Benvenuto
                   chat_id:
                       type: integer
-                      example: 123456
+                      example: 720235873
                   parse_mode:
                       type: string
                       example: html
-          application/json:
-            schema:
-              type: object
-              properties:
-                  preferiti: 
-                      type: string
-                      example: '/preferiti'
-                  posizione:
-                      type: string
-                      example: '/posizione'                  
+                  
       responses:
         200:
           description: Messaggio inviato con successo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  result:
+                    type: object
+                    properties:
+                      message_id:
+                        type: integer
+                      from:
+                        type: object
+                        properties:
+                          id: 
+                            type: integer
+                          is_bot:
+                            type: boolean
+                          first_man:
+                            type: string
+                          username:
+                            type: string
+                      chat:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          first_name:
+                            type: string
+                          username:
+                            type: string
+                          type:
+                            type: string
+                      date:
+                        type: integer
+                      text:
+                        type: string
+                  
+  # Request all'API Mapbox
+  /{long},{lat}.json:
+    get:
+      description: invia le coordinate per il reverse geocoding
+      security:
+        - ApiMapboxKey: []
+      parameters: 
+        - name: long
+          in: path
+          required: true
+          description: longitudine
+          schema:
+            type: number
+            example: 15.534643
+        - name: lat
+          in: path
+          required: true
+          description: latitudine
+          schema:
+            type: number
+            example: 41.456255
+        - name: types
+          in: query
+          description: sottoinsieme di dati
+          schema:
+            type: string
+            example: 'address'
+            
+      responses:
+        200:
+          description: La richiesta ha avuto successo e il server ha restituito un indirizzo
+          content:
+            application/vnd.geo+json:
+              schema: 
+                type: array
+                items:
+                  properties:
+                    type: 
+                      type: string
+                    query:
+                      type: array
+                      items:
+                          type: number
+                    features:
+                      type: array
+                      items:
+                        properties:
+                          id:
+                            type: string
+                          type:
+                            type: string
+                          place_type:
+                            type: array
+                            items:
+                              properties:
+                                address:
+                                  type: string
+                          relevance:
+                            type: integer
+                            example: 1
+                          properties:
+                            type: array
+                            items:
+                              properties:
+                                accuracy:
+                                  type: string
+                          text: 
+                            type: string
+                          place_name:
+                            type: string
+                          center:
+                            type: array
+                            items:
+                              type: number
+                          geometry:
+                            type: array
+                            items:
+                              properties:
+                                type:
+                                  type: string
+                                coordinates:
+                                  type: array
+                                  items:
+                                    type: number
+                          address:
+                            type: integer
+                          context: 
+                            type: array
+                            items:
+                                type: array
+                                items:
+                                  properties:
+                                    id:
+                                      type: string
+                                    text:
+                                      type: string
+                    attribution:
+                      type: string
           
-  # Messaggio con menu inline        
-  /messaggio_menu_i:
-    post:
-      description: Invia un messaggio testuale al client Telegram con menu inline
-      requestBody:
-        required: true
-        content:
-          array:
-            schema:
-              type: object
-              properties:
-                  text:
-                      type: string
-                      example: 'Nettuno: 5'
-                  chat_id:
-                      type: integer
-                      example: 123456
-                  parse_mode:
-                      type: string
-                      example: html
-          application/json:
-            schema:
-              type: object
-              properties:
-                  text: 
-                      type: string
-                      example: 'Aggiungi a preferiti'
-                  callback_query:
-                      type: string
-                      example: '/p1'                  
-      responses:
-        200:
-          description: Messaggio inviato con successo
+components:
+  securitySchemes:
+    ApiMapboxKey: #ApiKey dell'API Mapbox
+      type: apiKey
+      in: query       
+      name: access_token
