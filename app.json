@@ -1,0 +1,41 @@
+{
+  "addons": [
+    "cleardb",
+    "sendgrid"
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+    "BOT_TOKEN": {
+      "required": true
+    },
+    "CERT_PATH": {
+      "required": true
+    },
+    "CLEARDB_DATABASE_URL": {
+      "required": true
+    },
+    "MAPBOX_TOKEN": {
+      "required": true
+    },
+    "SENDGRID_API_KEY": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "BeachU",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
