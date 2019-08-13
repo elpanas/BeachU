@@ -7,7 +7,15 @@
     "estabilishment"
   ],
   "repository": "https://github.com/elpanas/BeachU",
-  "image": "heroku/php",
+  "scripts": {
+    "test": "codecept"
+  },
+  "formation": {
+    "web": {
+      "size": "free"
+    }
+  },
+  "image": "heroku/ruby",
   "buildpacks": [
     {
       "url": "https://github.com/heroku/heroku-buildpack-php"
