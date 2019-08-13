@@ -137,7 +137,7 @@ function estraeUtente($db,      // input: oggetto per comunicare col database
 function inseriscePassword($db,         // input: oggetto per comunicare col database 
                            $idu,        // input: id utente
                            $password) { // input: password dell'utente
-    $psw = hash('sha1',str_replace('/','',$password));  
+    $psw = hash('sha1',$password);  
     $db->query("UPDATE utenti 
                 SET password = '$psw', 
                     attesa_psw = 0,

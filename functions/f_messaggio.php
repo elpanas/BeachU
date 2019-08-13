@@ -69,7 +69,7 @@ function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una 
     	$markup = json_encode($inline_keyboard); // converte l'array in formato json
 	}
 	else
-		$text = ($pref) ? 'Lista preferiti vuota' : 'Non sono stabilimenti disponibili';
+		$text = ($pref) ? 'Lista preferiti vuota' : 'Non ci sono stabilimenti disponibili';
 	
 	$output = array('inlinek' => $markup,
 			        'testo' => $text);

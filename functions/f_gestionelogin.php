@@ -11,7 +11,7 @@ function gestioneLogin($db,$username,$dati_utente,$msg) {
         }
     elseif ($dati_utente['password'] == NULL) // l'utente c'è ma non la password
         {
-        if (strpos($msg,'/') >= 0) // l'utente ha inserito una password inacettabile "/"
+        if (strpos($msg,'/') !== false) // l'utente ha inserito una password inacettabile "/"
             $output['testo'] = 'Non sei ancora registrato/a
                      Inserisci una password priva dello slash iniziale "/"';
         else
