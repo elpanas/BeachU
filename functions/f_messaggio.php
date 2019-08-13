@@ -57,12 +57,8 @@ function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una 
 		$text .= ($pref) ? 'preferiti:</b>' : 'disponibili:</b>';
 		$i = 0;
 		foreach ($elenco as $record)	
-		{	
-            if ($pref)		
-                $inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].' ('.$record['localita'].'): '.$record['posti'];
-            else
-			    $inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].': '.$record['posti'];
-
+		{	            	
+            $inline_keyboard['inline_keyboard'][$i][0]['text'] = $record['stabilimento'].' ('.$record['localita'].', '.$record['provincia'].'): '.$record['posti'];
 			$inline_keyboard['inline_keyboard'][$i][0]['callback_data'] = '/s'.$record['id'];
 			$i++;
 		}

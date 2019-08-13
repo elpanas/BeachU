@@ -12,7 +12,7 @@ function aggiornaSessione($db,       // input: oggetto per comunicare col databa
 // modifica il flag che indica l'attesa di una password
 function cambiaFlagAttesa($db,      // input: oggetto per comunicare col database 
                           $idu) {   // input: id utente
-    $db->query("UPDATE utenti SET attesa_psw = IF(attesa_psw = 1,0,1) WHERE id = $idu") or die($db->mysql_error);;
+    $db->query("UPDATE utenti SET attesa_psw = IF(attesa_psw = 1,0,1) WHERE id = $idu") or die($db->mysql_error);
 }
 
 // controlla se lo stabilimento è nella lista preferiti dell'utente
@@ -51,6 +51,7 @@ function estraeDisp($db,    // input: oggetto database
         if($result->num_rows > 0) // verifica che esistano record nel db		 
             while($row = $result->fetch_assoc()) // converte in un array associativo
                 $dati = array('posti' => $row['posti'],
+                              'provincia' => $row['provincia'],
 			                  'localita' => $row['localita'],
 			                  'nome' => $row['nome'],
                               'indirizzo' => $row['civico']." ".$row['indirizzo']." ".$row['cap']." ".$row['localita']." ".$row['provincia'],
@@ -78,6 +79,7 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
         if($result->num_rows > 0) // verifica che esistano record nel db	    		
 	        while($row = $result->fetch_assoc())  // converte in un array associativo	    
 		        $elenco[$i++] = array('localita' => $row['localita'],
+                                      'provincia' => $row['provincia'],
 				      	              'stabilimento' => $row['nome'],
 				      	              'posti' => $row['posti'],
 				      	              'id' => $row['id']);
