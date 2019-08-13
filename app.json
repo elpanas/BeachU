@@ -12,7 +12,7 @@
   },
   "formation": {
     "test": {
-      "size": "free"
+      "size": "Standard-1X"
     }
   },
   "image": "heroku/ruby",
