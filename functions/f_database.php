@@ -192,5 +192,8 @@ function inserisceUtente($db,       // input: oggetto per comunicare col databas
 
 // resetta password
 function resetPassword($db,$username) {	
-	$db->query("UPDATE utenti SET password = NULL WHERE username = '$username'") or die($db->mysql_error);
+	$db->query("UPDATE utenti
+                SET password = NULL,
+                    attesa_psw = 1
+                WHERE username = '$username'") or die($db->mysql_error);
 }
