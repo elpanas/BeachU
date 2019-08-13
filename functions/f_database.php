@@ -102,6 +102,7 @@ function estraePreferiti($db,       // input: oggetto per comunicare col databas
     $query = "SELECT distinct s.nome as nome,
     			     s.id as id,
 			         s.localita as localita,
+                     s.provincia as provincia,
 			         s.posti as posti
               FROM preferiti as p JOIN 
                    utenti as u JOIN
