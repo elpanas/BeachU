@@ -83,7 +83,8 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
     $data = array('callback_query_id' => $id_query,
                   'text' => '');
 
-    $loggato = ($dati_utente = estraeUtente($db,$username) != NULL) ? $dati_utente['loggato'] : 0;
+    $dati_utente = estraeUtente($db,$username)
+    $loggato = ($dati_utente != NULL) ? $dati_utente['loggato'] : 0;
 	
     switch(true) {	
 	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente     
