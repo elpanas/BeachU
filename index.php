@@ -83,7 +83,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
     $data = array('callback_query_id' => $id_query,
                   'text' => '');
 
-    $dati_utente = estraeUtente($db,$username)
+    $dati_utente = estraeUtente($db,$username);
     $loggato = ($dati_utente != NULL) ? $dati_utente['loggato'] : 0;
 	
     switch(true) {	
