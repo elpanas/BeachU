@@ -29,7 +29,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
             $loggato = gestioneLogin($db,$username,$dati_utente,$messaggio); 
         } 
     else
-        $flag_psw = $loggato = 0;                       
+        $flag_psw = $loggato = false;                       
     	
     switch(true) {
     	case $messaggio == '/start':
