@@ -70,6 +70,29 @@ I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, son
 
 ---
 
+### Codifiche
+
+#### Database
+
+** Campi/Colonne **
+* testo: charset UTF-8
+* date: ISO 8601
+
+#### Messaggi
+
+**URL**
+* RFC 3986
+
+**Corpo dei messaggi:**
+* text/plain
+* application/json
+* application/vnd.geo+json
+
+**Codifica caratteri**
+* UTF-8
+
+---
+
 ### Approfondimento
 Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: [BeachU Wiki](https://github.com/elpanas/BeachU/wiki)
 

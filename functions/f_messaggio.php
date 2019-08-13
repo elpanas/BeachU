@@ -22,9 +22,7 @@ function creaMsg($chatid,   // input: id della chat
 function inviaMsg($data,        // input: dati allegati al messaggio
                   $url,         // input: indirizzo di destinazione (bot Telegram)
                   $post) {      // input: se è true usa il metodo POST altrimenti GET
-                    
-     
-	
+                   	
 	//  inizializza l'oggetto connessione
 	$ch = curl_init();
 	//  imposta l'url
@@ -34,7 +32,9 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 		//  imposta il metodo come POST
 		curl_setopt($ch, CURLOPT_POST, count($data));
 		//  campi della richiesta POST
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);       
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);   
+        
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('HeaderName:HeaderValue'));    
 	}
 	//  accetta la risposta
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -47,7 +47,8 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 }
 
 // crea un menu inline con gli stabilimenti sulla base dell'input fornito
-function creaElenco($elenco,$pref) { // input: elenco degli stabilimenti in una località
+function creaElenco($elenco,    // input: elenco degli stabilimenti in una località
+                    $pref) {    // input: flag per i preferiti
 	
 	$markup = null;
 	

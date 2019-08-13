@@ -108,4 +108,5 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 $data = creaMsg($chatID,$text,$encodedMarkup);	// compone il messaggio
 inviaMsg($data,$url,true);  // invia il messaggio
 
+// chiude la connessione al database
 $db->close();

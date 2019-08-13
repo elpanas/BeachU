@@ -1,7 +1,10 @@
 <?php
-function gestioneLogin($db,$username,$dati_utente,$msg) {
+function gestioneLogin($db,            // input: oggetto database
+                       $username,      // input: username telegram
+                       $dati_utente,   // input: dati dell'utente
+                       $msg) {         // input: messaggio ricevuto
 
-    $output = array('loggato' => false,
+    $output = array('loggato' => false, // output: flag loggato e testo del messaggio da inviare
                     'testo' => '');
 
     if ($dati_utente == NULL) // l'utente non è registrato

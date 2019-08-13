@@ -176,7 +176,7 @@ function inseriscePreferito($db,    // input: oggetto per comunicare col databas
                             $user,  // input: username telegram
                             $idp) { // input: id dello stabilimento preferito
 
-    $user = $db->real_escape_string($user); // output: 
+    $user = $db->real_escape_string($user); 
     $esito = $db->query("INSERT INTO preferiti (idstab,idutente)
                          VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))") or die($db->mysql_error);
 	
@@ -195,9 +195,10 @@ function inserisceUtente($db,       // input: oggetto per comunicare col databas
 }
 
 // resetta password
-function resetPassword($db,$username) {	
+function resetPassword($db,         // input: oggetto per comunicare col database
+                       $user) {	    // input: username telegram 
 	$db->query("UPDATE utenti
                 SET password = NULL,
                     attesa_psw = 1
-                WHERE username = '$username'") or die($db->mysql_error);
+                WHERE username = '$user'") or die($db->mysql_error);
 }

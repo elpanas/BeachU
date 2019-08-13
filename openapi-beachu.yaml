@@ -11,7 +11,7 @@ info:
     name: MIT
 
 paths: 
-  # Request all'API Telegram (Bot)
+  # richiesta all'API Telegram (Bot)
   /sendMessage:
     parameters:
       - in: path
@@ -108,7 +108,7 @@ paths:
         400:
           description: Errore
           
-  # Request all'API Mapbox
+  # richiesta all'API Mapbox
   /{long},{lat}.json:
     get:
       description: invia le coordinate per il reverse geocoding
