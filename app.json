@@ -11,7 +11,7 @@
     "test": "codecept"
   },
   "formation": {
-    "web": {
+    "test": {
       "size": "free"
     }
   },
