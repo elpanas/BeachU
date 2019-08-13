@@ -36,6 +36,7 @@
   },
   "name": "BeachU",
   "scripts": {
+    "test-setup": "./bin-ci_setup"
   },
   "stack": "heroku-18"
 }
