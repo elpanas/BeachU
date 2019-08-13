@@ -1,0 +1,29 @@
+{
+  "addons": [
+    "cleardb",
+    "sendgrid"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ],
+  "env": {
+    "BOT_TOKEN": "936947513:AAEZUdAcEhYL8tSqF_TdEmZGH97WvwSszf8",
+    "CERT_PATH": "cert/",
+    "CLEARDB_DATABASE_URL": "mysql://b1a677880978f6:8281befb@eu-cdbr-west-02.cleardb.net/heroku_14aadeb1afc693d?reconnect=true",
+    "MAPBOX_TOKEN": "pk.eyJ1IjoibHVrZTE5ODMiLCJhIjoiY2p5eTd3eGZ5MWV5YTNkcnI2amJqbWFrbyJ9.jtWFPk-5ju4CcAjZI7nDUg",
+    "SENDGRID_API_KEY": "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",
+    "SENDGRID_PASSWORD": "ufmqcslz9359",
+    "SENDGRID_USERNAME": "app142334869@heroku.com"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "BeachU",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
