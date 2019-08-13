@@ -1,4 +1,5 @@
 openapi: 3.0.0
+
 info:
   description: 'Questa applicazione permette di ricevere informazioni sulla disponibilità dei ombrelloni negli stabilimenti balneari'
   version: '1.0.0'
@@ -8,17 +9,10 @@ info:
     email: l.panariello@campus.uniurb.it
   license:
     name: MIT
-servers:  - 
-  - url: https://virtserver.swaggerhub.com/elpanas/beachu/1.0.0
-    description: SwaggerHub API Auto Mocking
-  - url: https://api.telegram.org/
-    description: Beachu API server
-  - url: https://api.mapbox.com/geocoding/v5/mapbox.places/
-    description: Mapbox API Server
-  
+
 paths: 
   # Request all'API Telegram (Bot)
-  /bot{ApiBOTKey}/sendMessage:
+  /sendMessage:
     parameters:
       - in: path
         name: ApiBOTKey
@@ -28,6 +22,9 @@ paths:
           type: string
     post:
       description: Invia un messaggio testuale al client Telegram con menu keyboard
+      servers:
+        - url: https://api.telegram.org/bot{ApiBOTKey}/
+          description: Beachu API server
       requestBody:
         required: true
         content:
@@ -37,13 +34,22 @@ paths:
               properties:
                   text:
                       type: string
-                      example: Benvenuto
+                      example: 'Ciao'
                   chat_id:
                       type: integer
                       example: 720235873
                   parse_mode:
                       type: string
                       example: html
+                  reply_markup:
+                      type: object
+                      properties:
+                          preferiti:
+                            type: string
+                            example: '/preferiti'
+                          posizione:
+                            type: string
+                            example: '/posizione'
                   
       responses:
         200:
@@ -55,42 +61,60 @@ paths:
                 properties:
                   ok:
                     type: boolean
+                    example: true
                   result:
                     type: object
                     properties:
                       message_id:
                         type: integer
+                        example: 1402
                       from:
                         type: object
                         properties:
                           id: 
                             type: integer
+                            example: 123456789
                           is_bot:
                             type: boolean
+                            example: true
                           first_man:
                             type: string
+                            example: 'BeachU'
                           username:
                             type: string
+                            example: 'beachu_bot'
                       chat:
                         type: object
                         properties:
                           id:
                             type: integer
+                            example: 123456789
                           first_name:
                             type: string
+                            example: 'Luca'
                           username:
                             type: string
+                            example: 'mio_username'
                           type:
                             type: string
+                            example: 'private'
                       date:
                         type: integer
+                        example: 1565712311
                       text:
                         type: string
-                  
+                        example: 'Ciao'
+        
+        400:
+          description: Errore
+          
   # Request all'API Mapbox
   /{long},{lat}.json:
     get:
       description: invia le coordinate per il reverse geocoding
+      servers:
+        - url: https://api.mapbox.com/geocoding/v5/mapbox.places/
+          description: Mapbox API Server
       security:
         - ApiMapboxKey: []
       parameters: 
@@ -126,24 +150,29 @@ paths:
                   properties:
                     type: 
                       type: string
+                      example: 'FeatureCollection'
                     query:
                       type: array
                       items:
                           type: number
+                      example: [15.534643, 41.456255]
                     features:
                       type: array
                       items:
                         properties:
                           id:
                             type: string
+                            example: 'address.1494126197'
                           type:
                             type: string
+                            example: 'Feature'
                           place_type:
                             type: array
                             items:
                               properties:
                                 address:
                                   type: string
+                                  example: 'address'
                           relevance:
                             type: integer
                             example: 1
@@ -153,26 +182,33 @@ paths:
                               properties:
                                 accuracy:
                                   type: string
+                                  example: 'point'
                           text: 
                             type: string
+                            example: 'via Benedetto Croce'
                           place_name:
                             type: string
+                            example: 'via Benedetto Croce 35, 71122 Foggia Foggia, Italy'
                           center:
                             type: array
                             items:
                               type: number
+                            example: [15.534902, 41.456351]  
                           geometry:
                             type: array
                             items:
                               properties:
                                 type:
                                   type: string
+                                  example: 'Point'
                                 coordinates:
                                   type: array
                                   items:
                                     type: number
+                                  example: [15.534902, 41.456351]  
                           address:
-                            type: integer
+                            type: string
+                            example: '35'
                           context: 
                             type: array
                             items:
@@ -181,11 +217,19 @@ paths:
                                   properties:
                                     id:
                                       type: string
+                                      example: 'postcode.12485805481228490'
                                     text:
                                       type: string
+                                      example: '71122'
+                                        
                     attribution:
                       type: string
+                      example: 'NOTICE:...'
+        
+        400:
+          description: Errore
           
+# Dati sensibili
 components:
   securitySchemes:
     ApiMapboxKey: #ApiKey dell'API Mapbox
