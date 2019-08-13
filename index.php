@@ -25,7 +25,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
         {
         $loggato = $dati_utente['loggato'];
         if ($flag_psw = $dati_utente['attesa_psw']) // se attende la password           
-            $loggato = gestioneLogin($db,$username,$dati_utente); 
+            $loggato = gestioneLogin($db,$username,$dati_utente,$messaggio); 
         } 
     else
         $flag_psw = $loggato = 0;                       
@@ -41,14 +41,14 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
 
         case $messaggio == '/preferiti':
         if (!$loggato && !$flag_psw) 
-            gestioneLogin($db,$username,$dati_utente);
+            gestioneLogin($db,$username,$dati_utente,$messaggio);
         else
             include 'includes/preferiti.php';
         break;
             
         case $messaggio == '/reset':
         if (!$loggato && !$flag_psw) 
-            gestioneLogin($db,$username,$dati_utente);
+            gestioneLogin($db,$username,$dati_utente,$messaggio);
         else
             include 'includes/resetpsw.php';
         break;
