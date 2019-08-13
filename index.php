@@ -20,8 +20,9 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
     $messaggio = isset($content["message"]["text"]) ? $content["message"]["text"] : '';
     $url = API_URL . 'sendMessage'; // url del bot telegram
     aggiornaSessione($db,$username);
-    
-    if($dati_utente = estraeUtente($db,$username) != NULL) // estrae i dati dell'utente
+    $dati_utente = estraeUtente($db,$username);
+
+    if($dati_utente != NULL) // estrae i dati dell'utente
         {
         $loggato = $dati_utente['loggato'];
         if ($flag_psw = $dati_utente['attesa_psw']) // se attende la password           
