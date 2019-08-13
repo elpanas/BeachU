@@ -1,14 +1,12 @@
 <?php 
-require 'settings/config.php';
+require 'includes/config.php';
 require 'db.php';
-require 'functions.php';
-require 'functions_db.php';
-require 'mapbox.php';
+require 'functions/f_messaggio.php';
+require 'functions/f_database.php';
+require 'functions/f_mapbox.php';
 
-$encodedMarkup = null; // inizializza la variabile per i menu
-
+$encodedMarkup = creaMenuKeyboard(); // inizializza la variabile per i menu
 $inputhttp = file_get_contents("php://input"); // legge le info in input
-
 $content = json_decode($inputhttp,true); // converte il formato json in array associativo
 
 if (isset($content['message'])) // è stato ricevuto un messaggio normale
@@ -20,20 +18,17 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
     $latitudine = isset($content["message"]["location"]["latitude"]) ? $content["message"]["location"]["latitude"] : '';
     $messaggio = isset($content["message"]["text"]) ? $content["message"]["text"] : '';
     $url = API_URL . 'sendMessage'; // url del bot telegram
-    $encodedMarkup = creaMenuKeyboard(); // crea il menu a tastiera
-
-    $loggato = controllaSessione($db,$chatID); // Verifica che esista una sessione
-
-    if (!$loggato)
-    {
-        $dati_reg = controllaReg($db,$username); // verifica se l'utente ha completato la registrazione
-
-        if ($dati_reg != NULL) // registrazione in attesa di password
-            $flag_psw = $dati_reg['attesa_psw']; // flag che indica che il msg è una password
-    }
+    aggiornaSessione($db,$username);
+    
+    if($dati_utente = estraeUtente($db,$username) != NULL) // estrae i dati dell'utente
+        {
+        $loggato = $dati_utente['loggato'];
+        if ($flag_psw = $dati_utente['attesa_psw']) // se attende la password           
+            $loggato = gestioneLogin($db,$username,$dati_utente); 
+        } 
     else
-        $dati_reg = $flag_psw = NULL;   
-	
+        $flag_psw = $loggato = 0;                       
+    	
     switch(true) {
     	case $messaggio == '/start':
 	    include 'includes/istruzioni.php';
@@ -41,23 +36,25 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
 	
 	    case ($longitudine != NULL && $latitudine != NULL):
 	    include 'includes/geoloc.php';
-	    break;
+	    break;	       
 
-    	case $messaggio == '/preferiti':
-	    include 'includes/infopreferiti.php';
-	    break;	
-	
-	    case ($dati_reg != NULL && $flag_psw): // l'utente non ha ancora completato la reg     
-        include 'includes/gestionelogin.php';	
-        break;    
-
+        case $messaggio == '/preferiti':
+        if (!$loggato && !$flag_psw) 
+            gestioneLogin($db,$username,$dati_utente);
+        else
+            include 'includes/preferiti.php';
+        break;
+            
         case $messaggio == '/reset':
-        include 'includes/resetpsw.php';
+        if (!$loggato && !$flag_psw) 
+            gestioneLogin($db,$username,$dati_utente);
+        else
+            include 'includes/resetpsw.php';
         break;
 
         default: // ha inserito la località  
-        include 'includes/infolocalita.php'; 
-    	}
+        include 'includes/localita.php'; 
+    	}        
     }
 elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio proveniente da un bottone inline
     {
@@ -73,22 +70,25 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
                   'text' => '');
 	
     switch(true) {	
-	    case ($count_p > 0): // inserisce lo stabilimento nella lista dell'utente     
+	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente     
 	    $data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore';        
 	    inviaMsg($data,$url,true); // invia il messaggio
 	    break;
 		
-	    case ($count_s > 0): // info dello stabilimento prescelto
-	    include 'includes/infostabilimento.php';
+	    case $count_s > 0: // info dello stabilimento prescelto
+	    include 'includes/stabilimento.php';
 	    break;
 
-        case ($count_r > 0):
+        case $count_r > 0:
         include 'includes/resetpswcallback.php';
         break;
 	
 	    default: // ha inserito la località
-	    include 'includes/infolocalita.php';
+	    include 'includes/localita.php';
 	    }
     }
+
+$data = creaMsg($chatID,$text,$encodedMarkup);	// compone il messaggio
+inviaMsg($data,$url,true);  // invia il messaggio
 
 $db->close();

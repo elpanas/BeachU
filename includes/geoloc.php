@@ -6,6 +6,3 @@ $output = creaElenco($elenco,false); // crea un array con l'insieme degli stabil
 $text = $output['testo'];
 
 if ($output['inlinek'] != null) $encodedMarkup = $output['inlinek'];
-
-$data = creaMsg($chatID,$text,$encodedMarkup); // compone il messaggio
-inviaMsg($data,$url,true); // invia il messaggio

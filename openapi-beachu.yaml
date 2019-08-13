@@ -8,7 +8,7 @@ info:
     email: l.panariello@campus.uniurb.it
   license:
     name: MIT
-servers:  - 
+servers: 
   - url: https://virtserver.swaggerhub.com/elpanas/beachu/1.0.0
     description: SwaggerHub API Auto Mocking
   - url: https://api.telegram.org/
