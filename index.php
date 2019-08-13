@@ -18,7 +18,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
     $longitudine = isset($content["message"]["location"]["longitude"]) ? $content["message"]["location"]["longitude"] : '';
     $latitudine = isset($content["message"]["location"]["latitude"]) ? $content["message"]["location"]["latitude"] : '';
     $messaggio = isset($content["message"]["text"]) ? $content["message"]["text"] : '';
-    $url = API_URL . 'sendMessage'; // url del bot telegram
+    $url = API_URL . 'sendMessage'; // url del bot Telegram
     aggiornaSessione($db,$username);
     $dati_utente = estraeUtente($db,$username);
 
