@@ -116,7 +116,7 @@ function estraeUtente($db,      // input: oggetto per comunicare col database
     $query = "SELECT id,
                      password,
                      attesa_psw,
-                     IF((TIMEDIFF(NOW(),sessione) > '24:00:00') OR (sessione = 0),0,1) as loggato
+                     IF(TIMEDIFF(NOW(),sessione) > '24:00:00',0,1) as loggato
               FROM utenti
               WHERE username = '$user'";
    

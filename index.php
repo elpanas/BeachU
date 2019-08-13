@@ -25,7 +25,9 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
     if($dati_utente != NULL) // estrae i dati dell'utente
         {
         $loggato = $dati_utente['loggato'];
-        if ($flag_psw = $dati_utente['attesa_psw']) // se attende la password    
+        $flag_psw = $dati_utente['attesa_psw'];
+
+        if ($flag_psw) // se attende la password    
             {       
             $output = gestioneLogin($db,$username,$dati_utente,$messaggio); 
             $loggato = $output['loggato'];
@@ -64,7 +66,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
             include 'includes/resetpsw.php';
         break;
 
-        default: // ha inserito la località  
+        case !$flag_psw: // ha inserito la località  
         include 'includes/localita.php'; 
     	}        
     }
