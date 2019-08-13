@@ -5,7 +5,7 @@ $dati_stab = estraeDisp($db,$id_stabilimento); // estrae i dati dello stabilimen
 $indirizzo = urlencode($dati_stab['indirizzo']); // codifica l'indirizzo per essere inserito in un url
 
 // controlla se è già presente tra i preferiti e se l'utente è loggato
-if (!controllaPreferito($db,$id_stabilimento,$username) && controllaSessione($db,$chatID))
+if (!controllaPreferito($db,$id_stabilimento,$username) && $loggato)
     {
         $inline_keyboard = array('inline_keyboard' => array(array(array('text' => 'Aggiungi ai preferiti',
                                                                                   'callback_data' => '/p'.$id_stabilimento))));

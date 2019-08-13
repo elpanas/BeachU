@@ -69,6 +69,8 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
     $url = API_URL . 'answerCallbackQuery'; // url del bot telegram
     $data = array('callback_query_id' => $id_query,
                   'text' => '');
+
+    $loggato = ($dati_utente = estraeUtente($db,$username) != NULL) ? $dati_utente['loggato'] : 0;
 	
     switch(true) {	
 	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente     
