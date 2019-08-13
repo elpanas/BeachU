@@ -26,7 +26,7 @@ function gestioneLogin($db,$username,$dati_utente,$msg) {
             cambiaFlagAttesa($db,$dati_utente['idu']); // imposta il flag a 1
             $output['testo'] = 'Inserire la password'; // l'utente è registrato ma non loggato
             }
-    elseif ($dati_utente['password'] != $messaggio) // la psw c'è, è un login ma la psw è errata
+    elseif ($dati_utente['password'] != hash('sha1',$messaggio)) // la psw c'è, è un login ma la psw è errata
             $output['testo'] = 'Password errata';
     else       
         { 
