@@ -116,6 +116,7 @@ function estraePreferiti($db,       // input: oggetto per comunicare col databas
             while($row = $result->fetch_assoc())  // converte in un array associativo						
                 $elenco[$i++] = array('stabilimento' => $row['nome'],
                                       'localita' => $row['localita'],
+                                      'provincia' => $row['provincia'],
 				                      'posti' => $row['posti'],
 				                      'id' => $row['id']);
 
