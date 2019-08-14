@@ -31,6 +31,26 @@ Il WS è stato implementato in linguaggio PHP v7, utilizzando un approccio preva
 #### Il Database
 E' stato scelto un database MySQL, in particolare ClearDB sempre fornito da Heroku, come add-on. Nel database vengono memorizzate le informazioni sugli stabilimenti e sugli utenti.
 
+Il database è organizzato in 3 tabelle:
+
+**Preferiti**
+
+| id | idstab | idutente |
+| -- | ------ | -------- |
+| integer | integer | integer |
+
+**Stabilimenti**
+
+| id | nome | località | posti | indirizzo | civico | cap | provincia |
+| -- | ---- | -------- | ----- | --------- | ------ | --- | --------- |
+| integer | varchar(45) | varchar(45) | tinyint | varchar(45) | integer | mediumint | varchar(45) |
+
+**Utenti**
+
+| id | username | password | attesa_psw | sessione |
+| -- | -------- | -------- | ---------- | -------- |
+| integer | varchar(45) | varchar(45) | tinyint(1) | datetime |
+
 ------------
 
 ## Funzionalità
