@@ -18,7 +18,7 @@ if (isset($content['message'])) // è stato ricevuto un messaggio normale
     $longitudine = isset($content["message"]["location"]["longitude"]) ? $content["message"]["location"]["longitude"] : '';
     $latitudine = isset($content["message"]["location"]["latitude"]) ? $content["message"]["location"]["latitude"] : '';
     $messaggio = isset($content["message"]["text"]) ? $content["message"]["text"] : '';
-    $url = API_URL . 'sendMessage'; // url del bot Telegram
+    $url = API_URL . 'sendMessage'; // url del bot telegram
     aggiornaSessione($db,$username);
     $dati_utente = estraeUtente($db,$username);
 
@@ -90,6 +90,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente     
 	    $data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore';        
 	    inviaMsg($data,$url,true); // invia il messaggio
+		if (!$loggato) $text = 'Hai attivato la funzione Preferiti. Per accedere ai preferiti dovrai scegliere una password';
 	    break;
 		
 	    case $count_s > 0: // info dello stabilimento prescelto
