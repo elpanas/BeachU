@@ -39,7 +39,7 @@ Inserendo il nome della località, appare una lista degli stabilimenti disponibi
 - #### Ricerca per posizione
 Per mezzo della funzione di telegram o del pulsante nel menu che appare in basso */posizione*, è possibile inviare la propria posizione, attraverso la quale il web service restituisce una lista degli stabilimenti disponibili nelle vicinanze.
 - #### Lista Preferiti
-Sempre dal menu in basso, cliccando sul bottone */preferiti*, è possibile visualizzare una lista degli stabilimenti preferiti, previa registrazione
+Sempre dal menu in basso, cliccando sul bottone <code>/preferiti</code>, è possibile visualizzare una lista degli stabilimenti preferiti, previa registrazione
 
 ------------
 
@@ -49,7 +49,7 @@ L'API basa il suo funzionamento sull'interscambio di dati tra client e server pe
 #### HTTP Requests client/server
 Le richieste HTTP tra il client (bot telegram) e il web service sono di tipo POST.
 
-Sia quelle in input che output trasportano dati in formato JSON, preventivamente (de)codificati per mezzo dell'apposita funzione _json_encode/decode()_ fornita dal framework PHP.
+Sia quelle in input che output trasportano dati in formato JSON, preventivamente (de)codificati per mezzo dell'apposita funzione <code>json_encode/decode()</code> fornita dal framework PHP.
 
 I dati all'interno dei file json, sono costituiti da voci di menu, informazioni sulla posizione e password.
 
@@ -66,7 +66,7 @@ Le richieste HTTP avvengono tutte con protocollo https, sia quelle POST che GET.
 
 La comunicazione con il DB avviene con autenticazione SSL.
 
-I parametri esterni delle query sql vengono preventivamente "trattati" con la funzione mysqli_real_escape_string() di PHP per evitare SQL Injiections.
+I parametri esterni delle query sql vengono preventivamente "trattati" con la funzione <code>mysqli_real_escape_string()</code> di PHP per evitare SQL Injiections.
 
 Le liste preferiti sono accessibili solo agli utenti registrati, con una semplice password. In caso di smarrimento può essere resettata direttamente dal client Telegram.
 
