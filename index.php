@@ -88,7 +88,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	
     switch(true) {	
 	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente  
-	    if (!controllaPreferito($db,$id_preferito,$username)
+	    if (!controllaPreferito($db,$id_preferito,$username))
 	    	$data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore'; 
 	    else
 		$data['text'] = 'Preferito già presente';
