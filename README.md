@@ -43,7 +43,7 @@ Il database è organizzato in 3 tabelle:
 
 | id | nome | località | posti | indirizzo | civico | cap | provincia |
 | -- | ---- | -------- | ----- | --------- | ------ | --- | --------- |
-| integer | varchar(45) | varchar(45) | tinyint | varchar(45) | integer | mediumint | varchar(45) |
+| integer | varchar(45) | varchar(45) | tinyint | varchar(45) | smallint | mediumint | varchar(45) |
 
 **Utenti**
 
