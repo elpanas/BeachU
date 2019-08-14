@@ -6,13 +6,13 @@ function aggiornaSessione($db,       // input: oggetto per comunicare col databa
     $db->query("UPDATE utenti
                 SET sessione = 0
                 WHERE TIMEDIFF(NOW(),sessione) > '24:00:00' AND
-                      username = '$user'") or die($db->error);
+                      username = '$user'");
 }
 
 // modifica il flag che indica l'attesa di una password
 function cambiaFlagAttesa($db,      // input: oggetto per comunicare col database 
                           $idu) {   // input: id utente
-    $db->query("UPDATE utenti SET attesa_psw = IF(attesa_psw = 1,0,1) WHERE id = $idu") or die($db->error);
+    $db->query("UPDATE utenti SET attesa_psw = IF(attesa_psw = 1,0,1) WHERE id = $idu");
 }
 
 // controlla se lo stabilimento è nella lista preferiti dell'utente
@@ -25,15 +25,11 @@ function controllaPreferito($db,        // input: oggetto per comunicare col dat
               WHERE idstab = $ids AND 
                     idutente = (SELECT id FROM utenti WHERE username = '$user')";
    
-    if($result = $db->query($query))
-        {
+    if($result = $db->query($query))        
         if ($result->num_rows > 0)
             $esito = true;
  
-        $result->free(); // libera la memoria
-        }
-    else
-        die($db->error);
+    $result->free(); // libera la memoria       
 
     return $esito;
 }
@@ -46,8 +42,7 @@ function estraeDisp($db,    // input: oggetto database
 	
 	$query = "SELECT * FROM stabilimenti WHERE id = $id ORDER BY nome";    
         
-    if($result = $db->query($query)) // effettua la query
-        {
+    if($result = $db->query($query)) // effettua la query        
         if($result->num_rows > 0) // verifica che esistano record nel db		 
             while($row = $result->fetch_assoc()) // converte in un array associativo
                 $dati = array('posti' => $row['posti'],
@@ -58,10 +53,7 @@ function estraeDisp($db,    // input: oggetto database
                               'id' => $row['id']);
     
         $result->free(); // libera la memoria
-        }
-    else
-        die($db->error);
-
+        
     return $dati;
 }
 
@@ -74,8 +66,7 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
 
     $query = "SELECT * FROM stabilimenti WHERE localita = '$localita' AND posti > 0 ORDER BY posti DESC";
 	
-    if($result = $db->query($query)) // effettua la query
-        {
+    if($result = $db->query($query)) // effettua la query    
         if($result->num_rows > 0) // verifica che esistano record nel db	    		
 	        while($row = $result->fetch_assoc())  // converte in un array associativo	    
 		        $elenco[$i++] = array('localita' => $row['localita'],
@@ -85,9 +76,6 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
 				      	              'id' => $row['id']);
     
         $result->free(); // libera la memoria
-        }
-    else
-        die($db->error);
 	
     return $elenco; // array 
 }
@@ -111,8 +99,7 @@ function estraePreferiti($db,       // input: oggetto per comunicare col databas
                     p.idutente = u.id AND
                     p.idstab = s.id";
 
-    if($result = $db->query($query)) // effettua la query
-        {
+    if($result = $db->query($query)) // effettua la query        
         if($result->num_rows > 0) // verifica che esistano record nel db				
             while($row = $result->fetch_assoc())  // converte in un array associativo						
                 $elenco[$i++] = array('stabilimento' => $row['nome'],
@@ -121,10 +108,7 @@ function estraePreferiti($db,       // input: oggetto per comunicare col databas
 				                      'posti' => $row['posti'],
 				                      'id' => $row['id']);
 
-        $result->free(); // libera la memoria
-        }
-    else
-        die($db->error);
+    $result->free(); // libera la memoria
 
     return $elenco; 
 }
@@ -142,8 +126,7 @@ function estraeUtente($db,      // input: oggetto per comunicare col database
               FROM utenti
               WHERE username = '$user'";
    
-    if($result = $db->query($query))
-        {
+    if($result = $db->query($query))        
         if ($result->num_rows > 0)
             while($row = $result->fetch_assoc())
                 $dati = array('idu' => $row['id'],
@@ -151,10 +134,7 @@ function estraeUtente($db,      // input: oggetto per comunicare col database
                               'attesa_psw' => $row['attesa_psw'],
                               'loggato' => $row['loggato']);
  
-        $result->free(); // libera la memoria
-        }
-    else
-        die($db->error);
+    $result->free(); // libera la memoria
 
     return $dati; 
 }
@@ -177,22 +157,22 @@ function inseriscePreferito($db,    // input: oggetto per comunicare col databas
                             $idp) { // input: id dello stabilimento preferito
 
     $user = $db->real_escape_string($user); 
-	$db->query("INSERT INTO utenti SET username = '$user'") or die($db->error);
+    $db->query("INSERT INTO utenti SET username = '$user'");
     $esito = $db->query("INSERT INTO preferiti (idstab,idutente) 
-                         VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))") or die($db->error);
+                         VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))");
 	
     return $esito; // output: indica il buon/cattivo esito della query
 }
 
 function inserisceSessione($db,$idu) {
-    $db->query("UPDATE utenti SET sessione = NOW() WHERE id = $idu") or die($db->error);
+    $db->query("UPDATE utenti SET sessione = NOW() WHERE id = $idu");
 }
 
 // inserisce un nuovo utente
 function inserisceUtente($db,       // input: oggetto per comunicare col database
                          $user) {   // input: username telegram 
     $user = $db->real_escape_string($user);
-    $db->query("INSERT INTO utenti SET username = '$user'") or die($db->error);
+    $db->query("INSERT INTO utenti SET username = '$user'");
 }
 
 // resetta password
@@ -201,5 +181,5 @@ function resetPassword($db,         // input: oggetto per comunicare col databas
 	$db->query("UPDATE utenti
                 SET password = NULL,
                     attesa_psw = 1
-                WHERE username = '$user'") or die($db->error);
+                WHERE username = '$user'");
 }
