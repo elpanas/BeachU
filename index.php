@@ -96,7 +96,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	    if (!$loggato) 
 	    	{
 		    $url = API_URL . 'sendMessage'; // url del bot telegram
-		    $text = 'Hai attivato la funzione Preferiti. Per accedere ai preferiti dovrai scegliere una password';		    
+		    $text = 'Hai attivato la funzione Preferiti. Il prossimo messaggio sarà la tua password. Scegli una password:';		    
 	    	}
 	    break;
 		
