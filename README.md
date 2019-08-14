@@ -1,17 +1,22 @@
 # BeachU
-### Sviluppatore
-###### Nome: Luca
-###### Cognome: Panariello
-###### Matricola: 289182
+## Sviluppatore
+
+**Nome:** Luca 
+
+**Cognome:** Panariello 
+
+**Matricola:** 289182
+
 ------------
-### Descrizione
+
+## Descrizione
 Una generica Domenica di Agosto. 38 °C
 Decidete di andare al mare. Avete organizzato tutto. Arrivate sul lungomare e... lo stabilimento non ha più posto, quindi chiedete al successivo e così ancora per 15 bagni!. D'ora in poi tutto ciò sarà un ricordo.
 BeachU è un'pplicazione sviluppata per piattaforma Telegram che permette di verificare in tempo reale la disponibilità di ombrelloni presso un qualunque stabilimento in base alle informazioni fornite dall'utente: semplicemente la posizione o il nome della località.
 
 ------------
 
-### Struttura e scelte implementative
+## Struttura e scelte implementative
 L'applicazione è attualmente costituita da 2 componenti:
 - **Client:**  bot Telegram
 - **Server:** un web service remoto implementato in PHP
@@ -27,7 +32,8 @@ Il WS è stato implementato in linguaggio PHP v7, utilizzando un approccio preva
 E' stato scelto un database MySQL, in particolare ClearDB sempre fornito da Heroku, come add-on. Nel database vengono memorizzate le informazioni sugli stabilimenti e sugli utenti.
 
 ------------
-### Funzionalità
+
+## Funzionalità
 - #### Ricerca per località
 Inserendo il nome della località, appare una lista degli stabilimenti disponibili e il numero di posti/ombrelloni ancora liberi, a patto che lo stabilimento sia presente nell'archivio.
 - #### Ricerca per posizione
@@ -37,7 +43,7 @@ Sempre dal menu in basso, cliccando sul bottone */preferiti*, è possibile visua
 
 ------------
 
-### Dettagli tecnici
+## Dettagli tecnici
 L'API basa il suo funzionamento sull'interscambio di dati tra client e server per mezzo di richieste HTTP così formate:
 
 #### HTTP Requests client/server
@@ -70,15 +76,15 @@ I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, son
 
 ---
 
-### Codifiche
+## Codifiche
 
-#### Database
+### Database
 
-** Campi/Colonne **
-* testo: charset UTF-8
-* date: ISO 8601
+**Colonne**
+* testo: UTF-8
+* date: ISO 8601 (YYYY-MM-DD HH:MM)
 
-#### Messaggi
+### Messaggi
 
 **URL**
 * RFC 3986
@@ -93,16 +99,16 @@ I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, son
 
 ---
 
-### Approfondimento
+## Approfondimento
 Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: [BeachU Wiki](https://github.com/elpanas/BeachU/wiki)
 
 ---
-### Specifica OpenAPI
+## Specifica OpenAPI
 [Clicca qui](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
 
 ---
 
-### API esterne
+## API esterne
 #### Mapbox
 Mapbox è un servizio simile a google maps, che fornisce informazioni sulla base della posizione. In questo caso è stata sfruttata la sua API gratuita per effettuare un Reverse Geocoding, cioè la conversione delle coordinate geografiche (latitudine  e longitudine) in semplici indirizzi "umani".
 Tale conversione viene effettuata nel caso l'utente fornisca la sua posizione. Il web service prende le coordinate dal messaggio telegram, le invia all'api di Mapbox e riceve come risposta l'indirizzo, da cui poi estrapola la località e, sulla base di questa, effettua la ricerca degli stabilimenti.
@@ -111,17 +117,20 @@ Anche se alcuni servizi avanzati legati all'API sono a pagamento, Mapbox è forn
 
 ---
 
-### Messa online del servizio
+## Messa online del servizio
 Avviene automaticamente, in quanto il fornitore dello spazio web, Heroku, è collegato alla repository GitHub dell'app in questione. Ad ogni modifica, i file presenti sul branch indicato vengono caricati sui server Heroku.
 
 ---
 
-### Esempio di utilizzo
+## Esempio di utilizzo
 Per la natura del servizio non è stato possibile usare dei dataset Opendata. Quindi il database è stato popolato con dati fittizi, al fine di effettuare alcune prove. In futuro è prevista l'implementazione di un secondo client, che permetterà ai gestori degli stabilimenti di fornire le informazioni sulla posizione (l'indirizzo) e soprattutto il numero di ombrelloni disponibili man mano che vengono occupati.
+
+Per l'esposizione delle funzionalità e per alcuni esempi si rimanda al wiki dell'app:
+[BeachU-Wiki](https://github.com/elpanas/BeachU/wiki)
 
 ---
 
-### Conclusione
+## Conclusione
 Ovviamente l'utente (bagnante) non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis...: 
 
 - i lidi meno conosciuti o difficili da raggiungere (quindi con più posti liberi ;) )
