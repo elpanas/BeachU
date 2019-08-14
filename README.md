@@ -125,6 +125,16 @@ Avviene automaticamente, in quanto il fornitore dello spazio web, Heroku, è col
 ## Esempio di utilizzo
 Per la natura del servizio non è stato possibile usare dei dataset Opendata. Quindi il database è stato popolato con dati fittizi, al fine di effettuare alcune prove. In futuro è prevista l'implementazione di un secondo client, che permetterà ai gestori degli stabilimenti di fornire le informazioni sulla posizione (l'indirizzo) e soprattutto il numero di ombrelloni disponibili man mano che vengono occupati.
 
+### Info sul test
+
+**Client**
+* Modello: HTC One M9
+* Sistema Operativo: Android 7.0 Nougat
+* Piattaforma: Telegram X (Versione 0.21.9.1172)
+
+**Server**
+* Server Web: Apache 2
+
 Per l'esposizione delle funzionalità e per alcuni esempi si rimanda al wiki dell'app:
 [BeachU-Wiki](https://github.com/elpanas/BeachU/wiki)
 
