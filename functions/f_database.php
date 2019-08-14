@@ -177,7 +177,8 @@ function inseriscePreferito($db,    // input: oggetto per comunicare col databas
                             $idp) { // input: id dello stabilimento preferito
 
     $user = $db->real_escape_string($user); 
-    $esito = $db->query("INSERT INTO preferiti (idstab,idutente)
+	$db->query("INSERT INTO utenti SET username = '$user'") or die($db->error);
+    $esito = $db->query("INSERT INTO preferiti (idstab,idutente) 
                          VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))") or die($db->error);
 	
     return $esito; // output: indica il buon/cattivo esito della query
