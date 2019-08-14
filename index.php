@@ -87,10 +87,13 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
     $loggato = ($dati_utente != NULL) ? $dati_utente['loggato'] : 0;
 	
     switch(true) {	
-	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente     
-	    $data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore';        
+	    case $count_p > 0: // inserisce lo stabilimento nella lista dell'utente  
+	    if (!controllaPreferito($db,$id_preferito,$username)
+	    	$data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore'; 
+	    else
+		$data['text'] = 'Preferito già presente';
 	    inviaMsg($data,$url,true); // invia il messaggio
-		if (!$loggato) $text = 'Hai attivato la funzione Preferiti. Per accedere ai preferiti dovrai scegliere una password';
+	    if (!$loggato) $text = 'Hai attivato la funzione Preferiti. Per accedere ai preferiti dovrai scegliere una password';
 	    break;
 		
 	    case $count_s > 0: // info dello stabilimento prescelto
