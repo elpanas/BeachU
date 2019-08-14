@@ -6,13 +6,13 @@ function aggiornaSessione($db,       // input: oggetto per comunicare col databa
     $db->query("UPDATE utenti
                 SET sessione = 0
                 WHERE TIMEDIFF(NOW(),sessione) > '24:00:00' AND
-                      username = '$user'") or die($db->mysql_error);
+                      username = '$user'") or die($db->error);
 }
 
 // modifica il flag che indica l'attesa di una password
 function cambiaFlagAttesa($db,      // input: oggetto per comunicare col database 
                           $idu) {   // input: id utente
-    $db->query("UPDATE utenti SET attesa_psw = IF(attesa_psw = 1,0,1) WHERE id = $idu") or die($db->mysql_error);
+    $db->query("UPDATE utenti SET attesa_psw = IF(attesa_psw = 1,0,1) WHERE id = $idu") or die($db->error);
 }
 
 // controlla se lo stabilimento è nella lista preferiti dell'utente
@@ -33,7 +33,7 @@ function controllaPreferito($db,        // input: oggetto per comunicare col dat
         $result->free(); // libera la memoria
         }
     else
-        die($db->mysql_error);
+        die($db->error);
 
     return $esito;
 }
@@ -60,7 +60,7 @@ function estraeDisp($db,    // input: oggetto database
         $result->free(); // libera la memoria
         }
     else
-        die($db->mysql_error);
+        die($db->error);
 
     return $dati;
 }
@@ -87,7 +87,7 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
         $result->free(); // libera la memoria
         }
     else
-        die($db->mysql_error);
+        die($db->error);
 	
     return $elenco; // array 
 }
@@ -124,7 +124,7 @@ function estraePreferiti($db,       // input: oggetto per comunicare col databas
         $result->free(); // libera la memoria
         }
     else
-        die($db->mysql_error);
+        die($db->error);
 
     return $elenco; 
 }
@@ -154,7 +154,7 @@ function estraeUtente($db,      // input: oggetto per comunicare col database
         $result->free(); // libera la memoria
         }
     else
-        die($db->mysql_error);
+        die($db->error);
 
     return $dati; 
 }
@@ -168,7 +168,7 @@ function inseriscePassword($db,         // input: oggetto per comunicare col dat
                 SET password = '$psw', 
                     attesa_psw = 0,
                     sessione = NOW()
-                    WHERE id = $idu") or die($db->mysql_error);
+                    WHERE id = $idu") or die($db->error);
 }
 
 // inserisce uno stabilimento tra i preferiti
@@ -178,20 +178,20 @@ function inseriscePreferito($db,    // input: oggetto per comunicare col databas
 
     $user = $db->real_escape_string($user); 
     $esito = $db->query("INSERT INTO preferiti (idstab,idutente)
-                         VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))") or die($db->mysql_error);
+                         VALUES ($idp,(SELECT id FROM utenti WHERE username = '$user'))") or die($db->error);
 	
     return $esito; // output: indica il buon/cattivo esito della query
 }
 
 function inserisceSessione($db,$idu) {
-    $db->query("UPDATE utenti SET sessione = NOW() WHERE id = $idu") or die($db->mysql_error);
+    $db->query("UPDATE utenti SET sessione = NOW() WHERE id = $idu") or die($db->error);
 }
 
 // inserisce un nuovo utente
 function inserisceUtente($db,       // input: oggetto per comunicare col database
                          $user) {   // input: username telegram 
     $user = $db->real_escape_string($user);
-    $db->query("INSERT INTO utenti SET username = '$user'") or die($db->mysql_error);
+    $db->query("INSERT INTO utenti SET username = '$user'") or die($db->error);
 }
 
 // resetta password
@@ -200,5 +200,5 @@ function resetPassword($db,         // input: oggetto per comunicare col databas
 	$db->query("UPDATE utenti
                 SET password = NULL,
                     attesa_psw = 1
-                WHERE username = '$user'") or die($db->mysql_error);
+                WHERE username = '$user'") or die($db->error);
 }
