@@ -33,8 +33,6 @@ function inviaMsg($data,        // input: dati allegati al messaggio
 		curl_setopt($ch, CURLOPT_POST, count($data));
 		//  campi della richiesta POST
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);   
-        
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('HeaderName:HeaderValue'));    
 	}
 	//  accetta la risposta
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
