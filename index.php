@@ -93,7 +93,11 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	    else
 		$data['text'] = 'Preferito già presente';
 	    inviaMsg($data,$url,true); // invia il messaggio
-	    if (!$loggato) $text = 'Hai attivato la funzione Preferiti. Per accedere ai preferiti dovrai scegliere una password';
+	    if (!$loggato) 
+	    	{
+		    $url = API_URL . 'sendMessage'; // url del bot telegram
+		    $text = 'Hai attivato la funzione Preferiti. Per accedere ai preferiti dovrai scegliere una password';		    
+	    	}
 	    break;
 		
 	    case $count_s > 0: // info dello stabilimento prescelto
