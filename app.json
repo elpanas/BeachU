@@ -16,5 +16,11 @@
   "scripts": {
     "test": "phpunit"
   },
-  "stack": "heroku-18"
+  "stack": "heroku-18",
+  "require": {
+  "ext-mbstring": "*"
+    },
+  "require-dev": {
+        "phpunit/phpunit": "8"
+    }
 }
