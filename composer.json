@@ -1,11 +1,5 @@
 {
   "name": "panas/beachu",
   "description": "",
-  "version": "1.0.0", 
-  "require": {
-  "ext-mbstring": "*"
-    },
-  "require-dev": {
-        "phpunit/phpunit": "8"
-    }
+  "version": "1.0.0"
 }
