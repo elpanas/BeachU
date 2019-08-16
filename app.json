@@ -7,22 +7,6 @@
       "url": "https://github.com/heroku/heroku-buildpack-php"
     }
   ],
-  /*
-  "env": {
-    "BOT_TOKEN": {
-      "required": true
-    },
-    "CERT_PATH": {
-      "required": true
-    },
-    "CLEARDB_DATABASE_URL": {
-      "required": true
-    },
-    "MAPBOX_TOKEN": {
-      "required": true
-    }
-  },
-  */
   "formation": {
     "web": {
       "quantity": 1
