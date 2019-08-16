@@ -59,7 +59,7 @@ Inserendo il nome della località, appare una lista degli stabilimenti disponibi
 - #### Ricerca per posizione
 Per mezzo della funzione di telegram o del pulsante nel menu che appare in basso */posizione*, è possibile inviare la propria posizione, attraverso la quale il web service restituisce una lista degli stabilimenti disponibili nelle vicinanze.
 - #### Lista Preferiti
-Sempre dal menu in basso, cliccando sul bottone <code>/preferiti</code>, è possibile visualizzare una lista degli stabilimenti preferiti, previa registrazione
+Sempre dal menu in basso, cliccando sul bottone <code>/preferiti</code>, è possibile visualizzare una lista degli stabilimenti preferiti, previa registrazione.
 
 ------------
 
