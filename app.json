@@ -7,6 +7,7 @@
       "url": "https://github.com/heroku/heroku-buildpack-php"
     }
   ],
+  /*
   "env": {
     "BOT_TOKEN": {
       "required": true
@@ -21,6 +22,7 @@
       "required": true
     }
   },
+  */
   "formation": {
     "web": {
       "quantity": 1
@@ -28,6 +30,7 @@
   },
   "name": "BeachU",
   "scripts": {
+    "test": "phpunit"
   },
   "stack": "heroku-18"
 }
