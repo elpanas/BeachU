@@ -7,6 +7,7 @@ require 'functions/f_gestionelogin.php';
 require 'functions/f_mapbox.php';
 
 $encodedMarkup = creaMenuKeyboard(); // inizializza la variabile per i menu
+$coordinate = NULL;
 $inputhttp = file_get_contents("php://input"); // legge le info in input
 $content = json_decode($inputhttp,true); // converte il formato json in array associativo
 
@@ -113,7 +114,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	    }
     }
 
-$data = creaMsg($chatID,$text,$encodedMarkup);	// compone il messaggio
+$data = creaMsg($chatID,$text,$encodedMarkup,$coordinate);	// compone il messaggio
 inviaMsg($data,$url,true);  // invia il messaggio
 
 // chiude la connessione al database
