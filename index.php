@@ -7,7 +7,7 @@ require 'functions/f_gestionelogin.php';
 require 'functions/f_mapbox.php';
 
 $encodedMarkup = creaMenuKeyboard(); // inizializza la variabile per i menu
-$coordinate = NULL;
+$coordinate = $text = NULL;
 $inputhttp = file_get_contents("php://input"); // legge le info in input
 $content = json_decode($inputhttp,true); // converte il formato json in array associativo
 
