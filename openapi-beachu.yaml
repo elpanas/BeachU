@@ -338,7 +338,7 @@ paths:
   # Request all'API Mapbox per Forward Geocoding
   /{address}.json:
     get:
-      description: invia l'indirizzo per il forward geocoding
+      description: invia un indirizzo per il forward geocoding
       servers:
         - url: https://api.mapbox.com/geocoding/v5/mapbox.places/
           description: Mapbox API Server
