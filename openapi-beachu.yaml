@@ -11,7 +11,7 @@ info:
     name: MIT
 
 paths: 
-  # richiesta all'API Telegram (Bot)
+  # Invio messaggio testuale all'API Telegram (Bot)
   /sendMessage:
     parameters:
       - in: path
@@ -107,8 +107,114 @@ paths:
         
         400:
           description: Errore
+  
+  # Invio messaggio con mappa all'API Telegram (Bot)
+  /sendLocation:
+    parameters:
+      - in: path
+        name: ApiBOTKey
+        required: true
+        description: Api Key del bot Telegram
+        schema:
+          type: string
+    post:
+      description: Invia un messaggio testuale al client Telegram con menu keyboard
+      servers:
+        - url: https://api.telegram.org/bot{ApiBOTKey}/
+          description: Beachu API server
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  chat_id:
+                      type: integer
+                      example: 720235873
+                  parse_mode:
+                      type: string
+                      example: html
+                  longitude:
+                      type: number
+                      example: 41.456054
+                  latitude:
+                      type: number
+                      example: 15.534664
+                  reply_markup:
+                      type: object
+                      properties:
+                          text:
+                            type: string
+                            example: 'Aggiunti ai preferiti'
+                          callback_data:
+                            type: string
+                            example: '/p1'
+                  
+      responses:
+        200:
+          description: Messaggio inviato con successo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                  result:
+                    type: object
+                    properties:
+                      message_id:
+                        type: integer
+                        example: 1543
+                      from:
+                        type: object
+                        properties:
+                          id: 
+                            type: integer
+                            example: 123456789
+                          is_bot:
+                            type: boolean
+                            example: true
+                          first_man:
+                            type: string
+                            example: 'BeachU'
+                          username:
+                            type: string
+                            example: 'beachu_bot'
+                      chat:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 123456789
+                          first_name:
+                            type: string
+                            example: 'Luca'
+                          username:
+                            type: string
+                            example: 'mio_username'
+                          type:
+                            type: string
+                            example: 'private'
+                      date:
+                        type: integer
+                        example: 1565712311
+                      location:
+                        type: object
+                        properties:
+                          latitude:
+                            type: number
+                            example: 15.534667
+                          longitude:
+                            type: number
+                            example: 41.456054
+        
+        400:
+          description: Errore
           
-  # richiesta all'API Mapbox
+  # Request all'API Mapbox per Reverse Geocoding
   /{long},{lat}.json:
     get:
       description: invia le coordinate per il reverse geocoding
@@ -209,6 +315,120 @@ paths:
                           address:
                             type: string
                             example: '35'
+                          context: 
+                            type: array
+                            items:
+                                type: array
+                                items:
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 'postcode.12485805481228490'
+                                    text:
+                                      type: string
+                                      example: '71122'
+                                        
+                    attribution:
+                      type: string
+                      example: 'NOTICE:...'
+        
+        400:
+          description: Errore
+  
+  # Request all'API Mapbox per Forward Geocoding
+  /{address}.json:
+    get:
+      description: invia l'indirizzo per il forward geocoding
+      servers:
+        - url: https://api.mapbox.com/geocoding/v5/mapbox.places/
+          description: Mapbox API Server
+      security:
+        - ApiMapboxKey: []
+      parameters: 
+        - name: address
+          in: path
+          required: true
+          description: indirizzo
+          schema:
+            type: string
+            example: 'Via Fiorello La guardia 6, 71122, Foggia, Foggia'
+        - name: limit
+          in: query
+          description: limite di record
+          schema:
+            type: integer
+            example: 1
+            
+      responses:
+        200:
+          description: Richiesta inviata con successo
+          content:
+            application/vnd.geo+json:
+              schema: 
+                type: array
+                items:
+                  properties:
+                    type: 
+                      type: string
+                      example: 'FeatureCollection'
+                    query:
+                      type: array
+                      items:
+                          type: string
+                      example: ['via', 'fiorello','la','guardia','6','foggia','71122']
+                    features:
+                      type: array
+                      items:
+                        properties:
+                          id:
+                            type: string
+                            example: 'address.537590089'
+                          type:
+                            type: string
+                            example: 'Feature'
+                          place_type:
+                            type: array
+                            items:
+                              properties:
+                                address:
+                                  type: string
+                                  example: 'address'
+                          relevance:
+                            type: integer
+                            example: 0.8333333333333333
+                          properties:
+                            type: array
+                            items:
+                              properties:
+                                accuracy:
+                                  type: string
+                                  example: 'point'
+                          text: 
+                            type: string
+                            example: 'via Fiorello La Guardia'
+                          place_name:
+                            type: string
+                            example: 'via Fiorello La Guardia 6, 71122 Foggia Foggia, Italy'
+                          center:
+                            type: array
+                            items:
+                              type: number
+                            example: [15.534755, 41.455576]  
+                          geometry:
+                            type: array
+                            items:
+                              properties:
+                                type:
+                                  type: string
+                                  example: 'Point'
+                                coordinates:
+                                  type: array
+                                  items:
+                                    type: number
+                                  example: [41.455576, 41.455576]  
+                          address:
+                            type: string
+                            example: '6'
                           context: 
                             type: array
                             items:
