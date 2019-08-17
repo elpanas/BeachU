@@ -13,6 +13,4 @@ if (!controllaPreferito($db,$id_stabilimento,$username))
         $encodedMarkup = json_encode($inline_keyboard); // converte l'array in formato json
     }
 
-$text = 'Lo stabilimento '.$dati_stab['nome'].' a '.$dati_stab['localita'].' ha '.$dati_stab['posti'].' ombrelloni disponibili'.PHP_EOL;
-
 $url = API_URL . 'sendLocation'; // url del bot telegram

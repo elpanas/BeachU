@@ -6,7 +6,6 @@ function creaMsg($chatid,   // input: id della chat
                  $coord) { // input: menu allegato al messaggio
 
     $data = array(
-			'text' => $text,
 			'chat_id' => $chatid,
 			'parse_mode' => 'html');
 
@@ -18,6 +17,8 @@ function creaMsg($chatid,   // input: id della chat
         $data['latitude'] = $coord['latitudine'];
         $data['longitude'] = $coord['longitudine'];
         }
+    else
+        $data['text'] = $text;
 	
 	return $data; // output: dati da allegare al messaggio
 }
