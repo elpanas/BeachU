@@ -2,18 +2,23 @@
 // compone il messaggio
 function creaMsg($chatid,   // input: id della chat
                  $text,     // input: testo del messaggio
-                 $markup) { // input: menu allegato al messaggio
-	if($markup != null)
-		$data = array(
-				'text' => $text,
-				'chat_id' => $chatid,
-				'parse_mode' => 'html',
-				'reply_markup' => $markup);
-	else
-		$data = array(
-				'text' => $text,
-				'chat_id' => $chatid,
-				'parse_mode' => 'html');
+                 $markup,
+                 $coord) { // input: menu allegato al messaggio
+
+    $data = array(
+			'chat_id' => $chatid,
+			'parse_mode' => 'html');
+
+	if ($markup != null)
+        $data['reply_markup'] = $markup;
+
+    if ($coord != NULL)
+        {
+        $data['latitude'] = $coord['latitudine'];
+        $data['longitude'] = $coord['longitudine'];
+        }
+    else
+        $data['text'] = $text;
 	
 	return $data; // output: dati da allegare al messaggio
 }
