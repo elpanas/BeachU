@@ -15,8 +15,8 @@ function mapboxForward($indirizzo) {
     $url = MAPBOX_URL.urlencode($indirizzo).'.json?limit=1&access_token='.getenv("MAPBOX_TOKEN"); // indirizzo per le richieste all'API   
     $inputhttp = inviaMsg(null,$url,false); // invia il messaggio GET    
     $content = json_decode($inputhttp,true); // converte il contenuto json in array 
-    $coordinate['longitudine'] = $content['features'][0]['center'][0]; // output: coordinate
-    $coordinate['latitudine'] = $content['features'][0]['center'][1];
+    $coordinate['longitudine'] = $content['features'][0]['geometry']['coordinates'][0]; // output: coordinate
+    $coordinate['latitudine'] = $content['features'][0]['geometry']['coordinates'][1];
 
     return $coordinate; // loc: array con la località
 }
