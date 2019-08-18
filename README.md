@@ -161,7 +161,7 @@ Per l'esposizione delle funzionalità e per alcuni esempi si rimanda al wiki del
 ---
 
 ## Conclusione
-Ovviamente l'utente (bagnante) non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis...: 
+Ovviamente l'utente (bagnante) non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis per...: 
 
 - i lidi meno conosciuti o difficili da raggiungere (quindi con più posti liberi ;) )
 - i lidi più grandi. Molti bagnanti rinunciano o optano per la spiaggia libera perchè non sanno che c'è l'ultimo ombrellone vacante a pochi metri da loro.
