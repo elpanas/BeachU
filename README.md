@@ -12,7 +12,7 @@
 ## Descrizione
 Una generica Domenica di Agosto. 38 °C
 Decidete di andare al mare. Avete organizzato tutto. Arrivate sul lungomare e... lo stabilimento non ha più posto, quindi chiedete al successivo e così ancora per 15 bagni!. D'ora in poi tutto ciò sarà un ricordo.
-BeachU è un'pplicazione sviluppata per piattaforma Telegram che permette di verificare in tempo reale la disponibilità di ombrelloni presso un qualunque stabilimento in base alle informazioni fornite dall'utente: semplicemente la posizione o il nome della località.
+BeachU è un'applicazione sviluppata per piattaforma Telegram che permette di verificare in tempo reale la disponibilità di ombrelloni presso un qualunque stabilimento in base alle informazioni fornite dall'utente: semplicemente la posizione o il nome della località.
 
 ------------
 
