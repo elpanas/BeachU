@@ -70,7 +70,10 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
     $elenco = null; // output: dati degli stabilimenti 
     $i = 0;
 
-    $query = "SELECT * FROM stabilimenti WHERE localita = '$localita' AND posti > 0 ORDER BY posti DESC";
+    $query = "SELECT * FROM stabilimenti 
+              WHERE localita LIKE %'$localita'% AND 
+                    posti > 0
+                    ORDER BY posti DESC";
 	
     if($result = $db->query($query)) // effettua la query    
         if($result->num_rows > 0) // verifica che esistano record nel db	    		
