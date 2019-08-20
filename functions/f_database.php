@@ -49,7 +49,7 @@ function estraeDisp($db,    // input: oggetto database
                               'provincia' => $row['provincia'],
 			                  'localita' => $row['localita'],
 			                  'nome' => $row['nome'],
-                              'indirizzo' => $row['civico'].",".$row['indirizzo'].",".$row['cap'].",".$row['localita'].",".$row['provincia'],
+                              'indirizzo' => $row['nome'].",".$row['civico'].",".$row['indirizzo'].",".$row['cap'].",".$row['localita'].",".$row['provincia'],
                               'id' => $row['id']);
     
         $result->free(); // libera la memoria
