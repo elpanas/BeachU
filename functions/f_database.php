@@ -71,7 +71,7 @@ function estraeElenco($db,          // input: oggetto per comunicare col databas
     $i = 0;
 
     $query = "SELECT * FROM stabilimenti 
-              WHERE localita LIKE %'$localita'% AND 
+              WHERE localita LIKE '%$localita%' AND 
                     posti > 0
                     ORDER BY posti DESC";
 	
