@@ -45,12 +45,18 @@ function estraeDisp($db,    // input: oggetto database
     if($result = $db->query($query)) // effettua la query        
         if($result->num_rows > 0) // verifica che esistano record nel db		 
             while($row = $result->fetch_assoc()) // converte in un array associativo
+                {
                 $dati = array('posti' => $row['posti'],
                               'provincia' => $row['provincia'],
 			                  'localita' => $row['localita'],
 			                  'nome' => $row['nome'],
-                              'indirizzo' => $row['nome'].",".$row['civico'].",".$row['indirizzo'].",".$row['cap'].",".$row['localita'].",".$row['provincia'],
+                              'indirizzo' => $row['nome'],
                               'id' => $row['id']);
+
+                if ($row['civico'] != NULL) $dati['indirizzo'] .= ','.$row['civico'];
+                if ($row['indirizzo'] != NULL) $dati['indirizzo'] .= ','.$row['indirizzo'];
+                $dati['indirizzo'] .= ",".$row['cap'].",".$row['localita'].",".$row['provincia'];
+                }
     
         $result->free(); // libera la memoria
         
