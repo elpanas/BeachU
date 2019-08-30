@@ -1,4 +1,5 @@
 # BeachU
+![Logo](https://github.com/elpanas/BeachU/blob/master/images/logo.png)
 ## Sviluppatore
 
 **Nome:** Luca 
