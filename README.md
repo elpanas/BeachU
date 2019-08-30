@@ -48,8 +48,6 @@ Il database è organizzato in 3 tabelle:
 | -- | -------- | -------- | ---------- | -------- |
 | integer | varchar(45) | varchar(45) | tinyint(1) | datetime |
 
-------------
-
 ## Funzionalità
 - #### Ricerca per località
 Inserendo il nome della località, appare una lista degli stabilimenti disponibili e il numero di posti/ombrelloni ancora liberi, a patto che lo stabilimento sia presente nell'archivio.
@@ -57,8 +55,6 @@ Inserendo il nome della località, appare una lista degli stabilimenti disponibi
 Per mezzo della funzione di telegram o del pulsante nel menu che appare in basso */posizione*, è possibile inviare la propria posizione, attraverso la quale il web service restituisce una lista degli stabilimenti disponibili nelle vicinanze.
 - #### Lista Preferiti
 Sempre dal menu in basso, cliccando sul bottone <code>/preferiti</code>, è possibile visualizzare una lista degli stabilimenti preferiti, previa registrazione.
-
-------------
 
 ## Dettagli tecnici
 L'API basa il suo funzionamento sull'interscambio di dati tra client e server per mezzo di richieste HTTP così formate:
@@ -91,8 +87,6 @@ Le password degli utenti e il codice identificativo della chat memorizzati nel d
 
 I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, sono memorizzati in variabili d'ambiente, impostate tramite l'interfaccia Heroku. Il file in cui sono memorizzati questi dati sensibili si trova al di fuori dello spazio pubblico, proprio per evitare accessi indesiderati.
 
----
-
 ## Codifiche
 
 ### Database
@@ -114,16 +108,11 @@ I dati relativi alla configurazione, quali API Keys e dati di accesso al DB, son
 **Codifica caratteri**
 * UTF-8
 
----
-
 ## Approfondimento
 Per ulteriori dettagli implementativi e analisi del codice, si rimanda al wiki: [BeachU Wiki](https://github.com/elpanas/BeachU/wiki)
 
----
 ## Specifica OpenAPI
 [Clicca qui](https://github.com/elpanas/BeachU/blob/master/openapi-beachu.yaml)
-
----
 
 ## API esterne
 #### Mapbox
@@ -132,12 +121,8 @@ Tale conversione viene effettuata nel caso l'utente fornisca la sua posizione. I
 
 Anche se alcuni servizi avanzati legati all'API sono a pagamento, Mapbox è fornito in licenza open-source, come si può leggere qui: https://www.mapbox.com/about/open/
 
----
-
 ## Messa online del servizio
 Avviene automaticamente, in quanto il fornitore dello spazio web, Heroku, è collegato alla repository GitHub dell'app in questione. Ad ogni modifica, i file presenti sul branch indicato vengono caricati sui server Heroku.
-
----
 
 ## Esempio di utilizzo
 Per la natura del servizio non è stato possibile usare dei dataset Opendata. Quindi il database è stato popolato con dati fittizi, al fine di effettuare alcune prove. In futuro è prevista l'implementazione di un secondo client, che permetterà ai gestori degli stabilimenti di fornire le informazioni sulla posizione (l'indirizzo) e soprattutto il numero di ombrelloni disponibili man mano che vengono occupati.
@@ -154,8 +139,6 @@ Per la natura del servizio non è stato possibile usare dei dataset Opendata. Qu
 
 Per l'esposizione delle funzionalità e per alcuni esempi si rimanda al wiki dell'app:
 [BeachU-Wiki](https://github.com/elpanas/BeachU/wiki)
-
----
 
 ## Conclusione
 Ovviamente l'utente (bagnante) non può fare tutto da solo. C'è bisogno della collaborazione dei gestori degli stabilimenti. Se ci pensate bene è un vantaggio anche per loro. In primis per...: 
