@@ -10,7 +10,7 @@ function gestioneLogin($db,            // input: oggetto database
     if ($dati_utente == NULL) // l'utente non è registrato
         { 
         inserisceUtente($db,$username);  // inserisce l'utente nel db     
-        $output['testo'] = 'Crea una password';
+        $output['testo'] = 'Hai attivato la funzione preferiti. Il prossimo messaggio crea una password';
         }
     elseif ($dati_utente['password'] == NULL) // l'utente c'è ma non la password
         {
