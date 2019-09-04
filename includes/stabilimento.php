@@ -6,7 +6,8 @@ $dati_stab = estraeDisp($db,$id_stabilimento); // estrae i dati dello stabilimen
 $url = API_URL . 'sendMessage'; // url del bot telegram
 
 $text = 'Nome: '.$dati_stab['nome'].'
-         Indirizzo: '.$dati_stab['indirizzo'];
+Indirizzo: '.$dati_stab['indirizzo'].'
+';
 
 if ($dati_stab['telefono'] > 0)
     $text .= 'Telefono: '.$dati_stab['telefono'];
