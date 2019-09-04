@@ -49,7 +49,6 @@ function estraeDisp($db,    // input: oggetto database
                 $dati = array('posti' => $row['posti'],
                               'provincia' => $row['provincia'],
 			                  'localita' => $row['localita'],
-                              'telefono' => $row['telefono'],
 			                  'nome' => $row['nome'],
                               'indirizzo' => $row['nome'],
                               'id' => $row['id']);
