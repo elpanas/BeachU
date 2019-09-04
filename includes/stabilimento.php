@@ -5,11 +5,11 @@ $dati_stab = estraeDisp($db,$id_stabilimento); // estrae i dati dello stabilimen
 
 $url = API_URL . 'sendMessage'; // url del bot telegram
 
-$text = 'Nome: '.$dati_stab['nome']."%0A";
+$text = 'Nome: '.$dati_stab['nome'].'<br>';
 $text .= 'Indirizzo: '.$dati_stab['indirizzo'];
 
 if ($dati_stab['telefono'] > 0)
-    $text .= "%0ATelefono: ".$dati_stab['telefono'];
+    $text .= "<br>Telefono: ".$dati_stab['telefono'];
 
 $data = creaMsg($chatID,$text,null,null);	// compone il messaggio
 
