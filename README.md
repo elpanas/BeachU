@@ -38,9 +38,9 @@ Il database è organizzato in 3 tabelle:
 
 **Stabilimenti**
 
-| id | nome | località | posti | indirizzo | civico | cap | provincia |
+| id | nome | località | posti | indirizzo | civico | cap | provincia | telefono |
 | -- | ---- | -------- | ----- | --------- | ------ | --- | --------- |
-| integer | varchar(45) | varchar(45) | tinyint | varchar(45) | smallint | mediumint | varchar(45) |
+| integer | varchar(45) | varchar(45) | tinyint | varchar(45) | smallint | mediumint | varchar(45) | varchar(14) |
 
 **Utenti**
 
