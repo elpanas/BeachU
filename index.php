@@ -96,7 +96,7 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 
 	    inviaMsg($data,$url,true); // invia il messaggio
 
-        if (!$loggato) 
+        if (!$loggato && $dati_utente == NULL) 
             {
             $output = gestioneLogin($db,$username,$dati_utente,$messaggio);
             $url = API_URL . 'sendMessage'; // url del bot telegram
