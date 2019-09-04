@@ -51,7 +51,7 @@ function estraeDisp($db,    // input: oggetto database
 			                  'localita' => $row['localita'],
                               'telefono' => $row['telefono'],
 			                  'nome' => $row['nome'],
-                              'indirizzo' => $row['indirizzo'],
+                              'indirizzo' => $row['nome'],
                               'id' => $row['id']);
 
                 if ($row['civico'] != NULL) $dati['indirizzo'] .= ','.$row['civico'];
