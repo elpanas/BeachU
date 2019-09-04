@@ -2,14 +2,18 @@
 inviaMsg($data,$url,true); // invia la risposta al callback
 
 $dati_stab = estraeDisp($db,$id_stabilimento); // estrae i dati dello stabilimento
-$coordinate = mapboxForward($dati_stab['indirizzo']); // codifica l'indirizzo per essere inserito in un url
 
 $url = API_URL . 'sendMessage'; // url del bot telegram
-$data['text'] = 'Nome: '.$dati_stab['nome'].'\n';
-$data['text'] .= 'Indirizzo: '.$dati_stab['indirizzo'];
+
+$text = 'Nome: '.$dati_stab['nome'].'\n';
+$text .= 'Indirizzo: '.$dati_stab['indirizzo'];
 
 if ($dati_stab['telefono'] > 0)
-    $data['text'] .= '\nTelefono: '.$dati_stab['telefono'];
+    $text .= '\nTelefono: '.$dati_stab['telefono'];
+
+$data = creaMsg($chatID,$text,null,null);	// compone il messaggio
+
+$coordinate = mapboxForward($dati_stab['indirizzo']); // codifica l'indirizzo per essere inserito in un url
 
 inviaMsg($data,$url,true); // invia un messaggio testuale con le informazioni
 
