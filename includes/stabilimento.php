@@ -2,22 +2,7 @@
 inviaMsg($data,$url,true); // invia la risposta al callback
 
 $dati_stab = estraeDisp($db,$id_stabilimento); // estrae i dati dello stabilimento
-
-$url = API_URL . 'sendMessage'; // url del bot telegram
-
-$text = 'Nome: '.$dati_stab['nome'];
-
-if ($dati_stab['telefono'] > 0)
-{
-    $text .= '
-Telefono: '.$dati_stab['telefono'];
-}    
-
-$data = creaMsg($chatID,$text,null,null);	// compone il messaggio
-
 $coordinate = mapboxForward($dati_stab['indirizzo']); // codifica l'indirizzo per essere inserito in un url
-
-inviaMsg($data,$url,true); // invia un messaggio testuale con le informazioni
 
 // controlla se è già presente tra i preferiti e se l'utente è loggato
 if (!controllaPreferito($db,$id_stabilimento,$username))
