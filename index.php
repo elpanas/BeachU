@@ -92,13 +92,22 @@ elseif(isset($content['callback_query'])) // è stato ricevuto un messaggio prov
 	    if (!controllaPreferito($db,$id_preferito,$username))
 	    	$data['text'] = (inseriscePreferito($db,$username,$id_preferito)) ? 'Preferito aggiunto' : 'Errore'; 
 	    else
-		$data['text'] = 'Preferito già presente';
+		    $data['text'] = 'Preferito già presente';
+
 	    inviaMsg($data,$url,true); // invia il messaggio
-	    if (!$loggato) 
+
+        if (!$loggato) 
+            {
+            $output = gestioneLogin($db,$username,$dati_utente,$messaggio);
+            $url = API_URL . 'sendMessage'; // url del bot telegram
+            $text = $output['testo'];
+            }
+        /*
+	    if (!$loggato && dati_utente == NULL) // se non è loggato e non esiste
 	    	{
 		    $url = API_URL . 'sendMessage'; // url del bot telegram
 		    $text = 'Hai attivato la funzione Preferiti. Il prossimo messaggio sarà la tua password. Scegli una password:';		    
-	    	}
+	    	} */
 	    break;
 		
 	    case $count_s > 0: // info dello stabilimento prescelto
