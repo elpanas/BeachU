@@ -2,8 +2,8 @@
 // compone il messaggio
 function creaMsg($chatid,   // input: id della chat
                  $text,     // input: testo del messaggio
-                 $markup,
-                 $coord) { // input: menu allegato al messaggio
+                 $markup,   // input: menu aggiuntivo
+                 $coord) {  // input: menu allegato al messaggio
 
     $data = array(
 			'chat_id' => $chatid,
