@@ -46,7 +46,7 @@ Il database è organizzato in 3 tabelle:
 
 | id | username | password | attesa_psw | sessione |
 | -- | -------- | -------- | ---------- | -------- |
-| integer | varchar(45) | varchar(45) | tinyint(1) | datetime |
+| integer | varchar(45) | varchar(45) | tinyint | datetime |
 
 ## Funzionalità
 - #### Ricerca per località
