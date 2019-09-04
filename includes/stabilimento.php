@@ -5,11 +5,11 @@ $dati_stab = estraeDisp($db,$id_stabilimento); // estrae i dati dello stabilimen
 
 $url = API_URL . 'sendMessage'; // url del bot telegram
 
-$text = 'Nome: ' + $dati_stab['nome'] + Environment.Newline;
-$text .= 'Indirizzo: ' + $dati_stab['indirizzo'];
+$text = 'Nome: '.$dati_stab['nome'].'\r\n';
+$text .= 'Indirizzo: '.$dati_stab['indirizzo'];
 
 if ($dati_stab['telefono'] > 0)
-    $text .= Environment.Newline + '\nTelefono: ' + $dati_stab['telefono'];
+    $text .= '\r\nTelefono: '.$dati_stab['telefono'];
 
 $data = creaMsg($chatID,$text,null,null);	// compone il messaggio
 
@@ -21,7 +21,7 @@ inviaMsg($data,$url,true); // invia un messaggio testuale con le informazioni
 if (!controllaPreferito($db,$id_stabilimento,$username))
     {
         $inline_keyboard = array('inline_keyboard' => array(array(array('text' => 'Aggiungi ai preferiti',
-                                                                                  'callback_data' => '/p' + $id_stabilimento))));
+                                                                                  'callback_data' => '/p'.$id_stabilimento))));
 		
         $encodedMarkup = json_encode($inline_keyboard); // converte l'array in formato json
     }
